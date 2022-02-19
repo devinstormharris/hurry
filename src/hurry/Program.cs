@@ -2,7 +2,7 @@
 
 using System;
 
-internal class Program
+public static class Program
 {
     static void Main()
     {
@@ -21,8 +21,8 @@ internal class Program
                     Thread.Sleep(1000);
                 }
 
-                Console.Write("Starting test.");
-                TypingTest.Start();
+                Console.WriteLine("Starting test.");
+                Test.Start();
             }
             else if (input == "quit")
             {
