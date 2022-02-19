@@ -2,25 +2,14 @@ namespace hurry;
 
 using System.Timers;
 
-public static class TypingTest
+internal static class Clock
 {
     private static Timer? _timer;
     private static int _seconds;
 
-    public static int Start()
+    public static void Start()
     {
-        StartTimer();
-        // output prompt
-        // input user text
-        StopTimer();
-        // calculate results
-        // return results
-        
-        return _seconds;
-    }
-
-    private static void StartTimer()
-    {
+        _seconds = 0;
         _timer = new Timer(1000);
         _timer.Elapsed += OnTimedEvent!;
         _timer.AutoReset = true;
@@ -30,11 +19,17 @@ public static class TypingTest
     private static void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
         _seconds++;
+        // Console.WriteLine($"tik {_seconds}");
     }
-
-    private static void StopTimer()
+    
+    public static void Stop()
     {
         _timer?.Stop();
         _timer?.Dispose();
+    }
+
+    public static int GetSeconds()
+    {
+        return _seconds;
     }
 }
