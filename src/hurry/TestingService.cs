@@ -16,7 +16,7 @@ public class TestingService
         var input = Console.ReadLine();
         TimeHelper.Stop();
 
-        var wpm = ScoreHelper.GetScore(input!);
+        var wpm = ResultsHelper.CalculateWpm(input!);
         var results = new Results(wpm);
 
         return results;
