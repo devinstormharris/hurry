@@ -21,6 +21,9 @@
 
     <ItemGroup>
       <EmbeddedResource Include="Resources\prompt.txt" />
+      <EmbeddedResource Include="Resources\prompt1.txt" />
+      <None Remove="Resources\prompt2.txt" />
+      <EmbeddedResource Include="Resources\prompt2.txt" />
     </ItemGroup>
 
 </Project>
