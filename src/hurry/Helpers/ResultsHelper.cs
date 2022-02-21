@@ -11,7 +11,7 @@ public static class ResultsHelper
             // to normalize results, we are considering 1 "word" to equal 5 characters, so we determine
             // words entered by dividing total characters by 5
 
-            var wordCount = test.UserInput!.Length / 5;
+            var wordCount = test.UserInput.Length / 5;
 
             // we first calculate words per second
 
@@ -22,9 +22,9 @@ public static class ResultsHelper
             var results = wordsPerSecond * 60;
             return results;
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Console.WriteLine("An error occurred when attempting to calculate WPM.", e);
+            Console.WriteLine("An error occurred when attempting to calculate WPM.");
             return 0;
         }
     }

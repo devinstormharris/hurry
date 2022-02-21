@@ -18,9 +18,9 @@ public static class PromptHelper
             var prompt = reader.ReadToEnd();
             return prompt;
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Console.WriteLine("An error occurred when attempting to get prompt from assembly.", e);
+            Console.WriteLine("An error occurred when attempting to get prompt from assembly.");
             return "";
         }
     }
