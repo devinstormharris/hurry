@@ -29,7 +29,15 @@ public static class TimeHelper
         _timer?.Dispose();
 
         test.Seconds = _seconds;
-
         return test;
+    }
+
+    public static void StartCountdown(int seconds)
+    {
+        for (var i = seconds; i > 0; i--)
+        {
+            Console.WriteLine($"Starting in {i} second(s)...");
+            Thread.Sleep(1000);
+        }
     }
 }
