@@ -17,12 +17,12 @@ internal static class TimeHelper
         _timer.AutoReset = true;
         _timer.Enabled = true;
     }
-    
-    private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+
+    private static void OnTimedEvent(object source, ElapsedEventArgs e)
     {
         _seconds++;
     }
-    
+
     public static void Stop()
     {
         _timer?.Stop();

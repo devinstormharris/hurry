@@ -2,9 +2,6 @@ using hurry.Helpers;
 
 namespace hurry;
 
-using System.IO;
-using System.Reflection;
-
 public static class Test
 {
     private static int _results;

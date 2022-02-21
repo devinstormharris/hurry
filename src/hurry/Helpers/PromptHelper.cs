@@ -11,12 +11,10 @@ public static class PromptHelper
         var promptPath = assembly.GetManifestResourceNames()
             .Single(str => str.EndsWith("prompt.txt"));
 
-        using (Stream? stream = assembly.GetManifestResourceStream(promptPath))
-        using (StreamReader reader = new StreamReader(stream!))
-        {
-            var prompt = reader.ReadToEnd();
-            Console.WriteLine(prompt);
-        }
+        using var stream = assembly.GetManifestResourceStream(promptPath);
+        using var reader = new StreamReader(stream!);
+        var prompt = reader.ReadToEnd();
+        Console.WriteLine(prompt);
     }
 
     // TODO: Add prompt randomizer

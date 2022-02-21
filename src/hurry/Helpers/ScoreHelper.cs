@@ -4,15 +4,15 @@ public static class ScoreHelper
 {
     private static char[]? _input;
     private static int _results;
-    
+
     public static int GetScore(string input)
     {
         _input = Array.Empty<char>();
         CalculateScore(input);
-        
+
         return _results;
     }
-    
+
     private static void CalculateScore(string str)
     {
         _input = str!.ToCharArray();
@@ -25,7 +25,7 @@ public static class ScoreHelper
         // we first calculate words per second
 
         var wordsPerSecond = wordCount / TimeHelper.GetSeconds();
-        
+
         // then we multiply words per second by 60 to get words per minute (wpm)
 
         _results = wordsPerSecond * 60;
