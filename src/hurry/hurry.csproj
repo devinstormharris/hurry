@@ -8,16 +8,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="Resources\prompt1.txt"/>
+        <None Remove="Resources\prompt1.txt" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="prompt1.txt"/>
+        <None Remove="prompt1.txt" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="prompt.txt"/>
-        <EmbeddedResource Include="prompt.txt"/>
+        <None Remove="prompt.txt" />
+        <EmbeddedResource Include="prompt.txt" />
     </ItemGroup>
 
 </Project>

@@ -1,12 +1,16 @@
-﻿namespace hurry;
+﻿using hurry.Helpers;
+using hurry.Models;
+
+namespace hurry;
 
 public static class Program
 {
     private static void Main()
     {
-        var testingService = new TestingService();
+        var test = new Test();
 
         Console.WriteLine("Welcome to hurry, a typing test where you want to hurry.");
+        
         for (var i = 3; i > 0; i--)
         {
             Console.WriteLine($"Test is starting in {i} second(s)...");
@@ -14,8 +18,15 @@ public static class Program
         }
 
         Console.WriteLine("Starting test.");
-        var results = testingService.Start();
-
-        Console.WriteLine($"Your WPM is {results}.");
+        
+        TimeHelper.StartTimer(test);
+        
+        Console.WriteLine(test.Prompt);
+        test.UserInput = Console.ReadLine()!.ToCharArray();
+        
+        test = TimeHelper.StopTimer(test);
+        
+        test.Result.Wpm = ResultsHelper.CalculateWpm(test!);
+        Console.WriteLine($"Your WPM is {test.Result.Wpm}.");
     }
 }
