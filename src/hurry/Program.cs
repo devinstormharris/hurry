@@ -18,10 +18,10 @@ public static class Program
         }
 
         Console.WriteLine("Starting test.");
+        PromptHelper.PrintPrompt(test);
         
         TimeHelper.StartTimer(test);
         
-        Console.WriteLine(test.Prompt);
         test.UserInput = Console.ReadLine()!.ToCharArray();
         
         test = TimeHelper.StopTimer(test);

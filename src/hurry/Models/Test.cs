@@ -13,7 +13,7 @@ public class Test
     
     public Results Result { get; }
     
-    public char[] UserInput { get; set; }
-    
+    public char[] UserInput { get; set; } = null!;
+
     public int Seconds { get; set; }
 }
