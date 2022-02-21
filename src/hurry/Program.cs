@@ -5,6 +5,7 @@ public static class Program
     private static void Main()
     {
         Console.WriteLine("Welcome to hurry, a typing test where you want to hurry.");
+        var testingService = new TestingService();
 
         while (true)
         {
@@ -22,8 +23,7 @@ public static class Program
                     }
 
                     Console.WriteLine("Starting test.");
-                    Test.Start();
-                    var results = Test.GetResults();
+                    var results = testingService.Start();
 
                     Console.WriteLine($"Your WPM is {results}.");
                     break;
