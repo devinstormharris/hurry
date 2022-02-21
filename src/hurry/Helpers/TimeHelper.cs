@@ -1,8 +1,9 @@
-namespace hurry;
-
 using System.Timers;
+using Timer = System.Timers.Timer;
 
-internal static class Clock
+namespace hurry.Helpers;
+
+internal static class TimeHelper
 {
     private static Timer? _timer;
     private static int _seconds;

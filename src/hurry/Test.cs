@@ -1,3 +1,5 @@
+using hurry.Helpers;
+
 namespace hurry;
 
 using System.IO;
@@ -12,10 +14,10 @@ public static class Test
     {
         _input = Array.Empty<char>();
         
-        Prompt.Start();
-        Clock.Start();
+        PromptHelper.GetPrompt();
+        TimeHelper.Start();
         GetInput();
-        Clock.Stop();
+        TimeHelper.Stop();
         ViewInput();
         CalculateResults();
     }
@@ -29,7 +31,7 @@ public static class Test
     private static void ViewInput()
     {
         Console.WriteLine("Your input: {0}", string.Join("", _input!));
-        Console.WriteLine($"Time elapsed: {Clock.GetSeconds()} seconds...");
+        Console.WriteLine($"Time elapsed: {TimeHelper.GetSeconds()} seconds...");
     }
 
     private static void CalculateResults()
@@ -41,7 +43,7 @@ public static class Test
 
         // we first calculate words per second
 
-        var wordsPerSecond = wordCount / Clock.GetSeconds();
+        var wordsPerSecond = wordCount / TimeHelper.GetSeconds();
         
         // then we multiply words per second by 60 to get words per minute (wpm)
 

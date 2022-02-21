@@ -1,10 +1,10 @@
 using System.Reflection;
 
-namespace hurry;
+namespace hurry.Helpers;
 
-public static class Prompt
+public static class PromptHelper
 {
-    public static void Start()
+    public static void GetPrompt()
     {
         var assembly = Assembly.GetExecutingAssembly();
 
