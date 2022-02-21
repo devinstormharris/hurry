@@ -2,15 +2,10 @@ namespace hurry.Models;
 
 public class Results
 {
-    public Results(int wpm)
+    public Results()
     {
-        Wpm = wpm;
+        Wpm = 0;
     }
 
-    private int Wpm { get; }
-
-    public override string ToString()
-    {
-        return Wpm.ToString();
-    }
+    public int Wpm { get; set; }
 }

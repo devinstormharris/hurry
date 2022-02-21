@@ -1,16 +1,19 @@
+using hurry.Helpers;
+
 namespace hurry.Models;
 
 public class Test
 {
-    public Test(string prompt)
+    public Test()
     {
-        Prompt = prompt;
+        Result = new Results();
+        Prompt = PromptHelper.GetPrompt();
     }
-
-    private string Prompt { get; }
-
-    public override string ToString()
-    {
-        return Prompt;
-    }
+    public string Prompt { get; }
+    
+    public Results Result { get; }
+    
+    public char[] UserInput { get; set; }
+    
+    public int Seconds { get; set; }
 }
