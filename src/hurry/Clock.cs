@@ -7,6 +7,7 @@ internal static class Clock
     private static Timer? _timer;
     private static int _seconds;
 
+
     public static void Start()
     {
         _seconds = 0;
@@ -19,7 +20,6 @@ internal static class Clock
     private static void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
         _seconds++;
-        // Console.WriteLine($"tik {_seconds}");
     }
     
     public static void Stop()

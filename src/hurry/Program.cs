@@ -17,12 +17,15 @@ public static class Program
             {
                 for (int i = 3; i > 0; i--)
                 {
-                    Console.WriteLine($"Test is starting in {i} seconds...");
+                    Console.WriteLine($"Test is starting in {i} second(s)...");
                     Thread.Sleep(1000);
                 }
 
                 Console.WriteLine("Starting test.");
                 Test.Start();
+                var results = Test.GetResults();
+                
+                Console.WriteLine($"Your WPM is {results}.");
             }
             else if (input == "quit")
             {
