@@ -11,7 +11,7 @@ public static class PromptHelper
             var assembly = Assembly.GetExecutingAssembly();
 
             var promptPath = assembly.GetManifestResourceNames()
-                .Single(str => str.EndsWith("prompt.txt"));
+                .Single(str => str.EndsWith(RandomizePrompt()));
 
             using var stream = assembly.GetManifestResourceStream(promptPath);
             using var reader = new StreamReader(stream!);
@@ -25,5 +25,17 @@ public static class PromptHelper
         }
     }
 
-    // TODO: Add prompt randomizer
+    private static string RandomizePrompt()
+    {
+        var prompts = new Dictionary<int, string>()
+        {
+            {1, "prompt1.txt"},
+            {2, "prompt2.txt"}
+        };
+
+        Random random = new Random();
+        int randomInt = random.Next(1, prompts.Count);
+
+        return prompts[randomInt];
+    }
 }
