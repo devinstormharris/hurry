@@ -18,6 +18,6 @@ public static class PromptHelper
             Console.WriteLine(prompt);
         }
     }
-    
+
     // TODO: Add prompt randomizer
 }
