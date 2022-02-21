@@ -8,7 +8,6 @@ internal static class TimeHelper
     private static Timer? _timer;
     private static int _seconds;
 
-
     public static void Start()
     {
         _seconds = 0;
