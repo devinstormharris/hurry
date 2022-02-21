@@ -26,7 +26,7 @@ public static class Program
         
         test = TimeHelper.StopTimer(test);
         
-        test.Result.Wpm = ResultsHelper.CalculateWpm(test!);
+        test.Result.Wpm = ResultsHelper.CalculateWpm(test);
         Console.WriteLine($"Your WPM is {test.Result.Wpm}.");
     }
 }
