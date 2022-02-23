@@ -13,12 +13,12 @@ public static class Program
         TimeHelper.StartCountdown(3);
         Console.WriteLine("Starting test.");
         
-        Console.WriteLine(test.Prompt);
-        TimeHelper.StartTimer(test);
-        test.UserInput = Console.ReadLine()!.ToCharArray();
-        
-        test = TimeHelper.StopTimer(test);
-        test.Result.Wpm = ResultsHelper.CalculateWpm(test);
+        test.PrintPrompt();
+        test.StartTimer();
+        test.GetUserInput();
+
+        test.StopTimer();
+        test.CalculateWpm();
         Console.WriteLine($"Your WPM is {test.Result.Wpm}.");
     }
 }

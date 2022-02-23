@@ -9,7 +9,7 @@ public static class TimeHelper
     private static Timer? _timer;
     private static int _seconds;
     
-    public static void StartTimer(Test test)
+    public static void StartTimer(this Test test)
     {
         _seconds = test.Seconds;
         _timer = new Timer(1000);
@@ -23,7 +23,7 @@ public static class TimeHelper
         _seconds++;
     }
     
-    public static Test StopTimer(Test test)
+    public static Test StopTimer(this Test test)
     {
         _timer?.Stop();
         _timer?.Dispose();

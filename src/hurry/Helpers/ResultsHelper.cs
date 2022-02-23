@@ -4,7 +4,7 @@ namespace hurry.Helpers;
 
 public static class ResultsHelper
 {
-    public static int CalculateWpm(Test test)
+    public static int CalculateWpm(this Test test)
     {
         try
         { // TODO: calculate wpm accurately

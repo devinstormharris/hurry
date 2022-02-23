@@ -26,4 +26,14 @@ public static class PromptHelper
             
         return prompt;    
     }
+
+    public static void PrintPrompt(this Test test)
+    {
+        Console.WriteLine(test.Prompt);
+    }
+
+    public static void GetUserInput(this Test test)
+    {
+        test.UserInput = Console.ReadLine()!.ToCharArray();
+    }
 }
