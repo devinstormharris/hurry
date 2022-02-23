@@ -4,19 +4,33 @@ namespace hurry;
 
 public static class Program
 {
-    
+    private const int _countdownTimer = 3;
+
     private static void Main()
     {
         var testService = new TestService();
         Console.WriteLine("Welcome to hurry, a typing test where you want to hurry.");
-        
-        Console.WriteLine("Starting test.");
-        testService.StartTest();
+        StartCountdown();
 
+        var prompt = testService.GetPrompt();
+        Console.WriteLine(prompt);
+
+        testService.Start();
         var input = Console.ReadLine()!;
-        testService.StopTest(input);
-        
+        testService.Stop(input);
+
         var wpm = testService.GetResults()!.Wpm;
         Console.WriteLine($"Your WPM is {wpm}.");
+    }
+
+    private static void StartCountdown()
+    {
+        for (var i = _countdownTimer; i > 0; i--)
+        {
+            Console.WriteLine($"Starting in {i} second(s)...");
+            Thread.Sleep(1000);
+        }
+
+        Console.WriteLine("Starting test.");
     }
 }

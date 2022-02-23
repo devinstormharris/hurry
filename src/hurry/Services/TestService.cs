@@ -6,16 +6,18 @@ namespace hurry.Services;
 public class TestService
 {
     private readonly Test _test = new Test();
-    
-    public void StartTest()
+
+    public string GetPrompt()
     {
-        _test.StartCountdown();
-        
-        _test.PrintPrompt();
+        return _test.Prompt;
+    }
+
+    public void Start()
+    {
         _test.StartTimer();
     }
-    
-    public void StopTest(string input)
+
+    public void Stop(string input)
     {
         _test.UserInput = input.ToCharArray();
         _test.StopTimer();

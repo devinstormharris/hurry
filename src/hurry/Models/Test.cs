@@ -14,9 +14,9 @@ public class Test
     }
 
     public string Prompt { get; }
-    
+
     public Results? Result { get; }
-    
+
     public char[] UserInput { get; set; }
 
     public int SecondsElapsed { get; set; }

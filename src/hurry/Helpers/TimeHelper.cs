@@ -8,7 +8,7 @@ public static class TimeHelper
 {
     private static Timer? _timer;
     private static int _seconds;
-    
+
     public static void StartTimer(this Test test)
     {
         _seconds = test.SecondsElapsed;
@@ -22,7 +22,7 @@ public static class TimeHelper
     {
         _seconds++;
     }
-    
+
     public static Test StopTimer(this Test test)
     {
         _timer?.Stop();
@@ -30,14 +30,5 @@ public static class TimeHelper
 
         test.SecondsElapsed = _seconds;
         return test;
-    }
-
-    public static void StartCountdown(this Test test)
-    {
-        for (var i = test.CountdownTimer; i > 0; i--)
-        {
-            Console.WriteLine($"Starting in {i} second(s)...");
-            Thread.Sleep(1000);
-        }
     }
 }

@@ -7,11 +7,12 @@ public static class ResultsHelper
     public static int CalculateWpm(this Test test)
     {
         try
-        { // TODO: calculate wpm accurately
+        {
+            // TODO: calculate wpm accurately
             var wordCount = test.UserInput.Length / 5L;
             var wordsPerSecond = wordCount / test.SecondsElapsed;
-            var results = (int)wordsPerSecond * 60;
-            
+            var results = (int) wordsPerSecond * 60;
+
             return results;
         }
         catch (Exception)
