@@ -11,7 +11,7 @@ public static class TimeHelper
     
     public static void StartTimer(this Test test)
     {
-        _seconds = test.Seconds;
+        _seconds = test.SecondsElapsed;
         _timer = new Timer(1000);
         _timer.Elapsed += OnTimedEvent!;
         _timer.AutoReset = true;
@@ -28,13 +28,13 @@ public static class TimeHelper
         _timer?.Stop();
         _timer?.Dispose();
 
-        test.Seconds = _seconds;
+        test.SecondsElapsed = _seconds;
         return test;
     }
 
-    public static void StartCountdown(int seconds)
+    public static void StartCountdown(this Test test)
     {
-        for (var i = seconds; i > 0; i--)
+        for (var i = test.CountdownTimer; i > 0; i--)
         {
             Console.WriteLine($"Starting in {i} second(s)...");
             Thread.Sleep(1000);

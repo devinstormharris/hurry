@@ -32,8 +32,4 @@ public static class PromptHelper
         Console.WriteLine(test.Prompt);
     }
 
-    public static void GetUserInput(this Test test)
-    {
-        test.UserInput = Console.ReadLine()!.ToCharArray();
-    }
 }

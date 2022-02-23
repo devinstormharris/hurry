@@ -9,7 +9,7 @@ public static class ResultsHelper
         try
         { // TODO: calculate wpm accurately
             var wordCount = test.UserInput.Length / 5L;
-            var wordsPerSecond = wordCount / test.Seconds;
+            var wordsPerSecond = wordCount / test.SecondsElapsed;
             var results = (int)wordsPerSecond * 60;
             
             return results;

@@ -8,12 +8,20 @@ public class Test
     {
         Result = new Results();
         Prompt = PromptHelper.GetPrompt();
+        IsComplete = false;
+        CountdownTimer = 3;
+        UserInput = null!;
     }
+
     public string Prompt { get; }
     
-    public Results Result { get; }
+    public Results? Result { get; }
     
-    public char[] UserInput { get; set; } = null!;
+    public char[] UserInput { get; set; }
 
-    public int Seconds { get; set; }
+    public int SecondsElapsed { get; set; }
+
+    public int CountdownTimer { get; set; }
+
+    public bool IsComplete { get; set; }
 }
