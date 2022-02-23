@@ -13,7 +13,7 @@ public static class Program
         TimeHelper.StartCountdown(3);
         Console.WriteLine("Starting test.");
         
-        Console.WriteLine(PromptHelper.GetPrompt());
+        Console.WriteLine(test.Prompt);
         TimeHelper.StartTimer(test);
         test.UserInput = Console.ReadLine()!.ToCharArray();
         
