@@ -17,6 +17,7 @@ public class TimeService
         _timer.AutoReset = true;
         _timer.Enabled = true;
     }
+
     private void OnTimedEvent(object source, ElapsedEventArgs e)
     {
         _seconds++;

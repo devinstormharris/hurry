@@ -4,8 +4,6 @@ namespace hurry;
 
 public static class Program
 {
-    private const int _countdownTimer = 3;
-
     private static async Task Main()
     {
         var testService = new TestService();
@@ -25,7 +23,7 @@ public static class Program
 
     private static async Task StartCountdown()
     {
-        for (var i = _countdownTimer; i > 0; i--)
+        for (var i = 3; i > 0; i--)
         {
             Console.WriteLine($"Starting in {i} second(s)...");
             await Task.Delay(TimeSpan.FromSeconds(1));
