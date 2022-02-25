@@ -2,13 +2,26 @@ using hurry.Models;
 
 namespace hurry.Services;
 
-public class TestService
+public interface ITestService
+{
+    string GetPrompt();
+    void Start();
+    void Stop(string input);
+    Results? GetResults();
+}
+public class TestService : ITestService
 {
     private readonly Test _test = new();
-    private readonly TimeService _timeService = new();
-    private readonly PromptService _promptService = new();
-    private readonly ResultsService _resultsService = new();
+    private readonly ITimerService _timerService;
+    private readonly IPromptService _promptService;
+    private readonly IResultsService _resultsService;
 
+    public TestService(ITimerService timerService, IPromptService promptService, IResultsService resultsService)
+    {
+        _timerService = timerService;
+        _promptService = promptService;
+        _resultsService = resultsService;
+    }
     public string GetPrompt()
     {
         _test.Prompt = _promptService.GetPrompt();
@@ -17,13 +30,13 @@ public class TestService
 
     public void Start()
     {
-        _timeService.StartTimer(_test);
+        _timerService.StartTimer(_test);
     }
 
     public void Stop(string input)
     {
         _test.UserInput = input.ToCharArray();
-        _timeService.StopTimer(_test);
+        _timerService.StopTimer(_test);
         _test.Result!.Wpm = _resultsService.CalculateWpm(_test);
         _test.IsComplete = true;
     }

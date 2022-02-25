@@ -6,7 +6,7 @@ public static class Program
 {
     private static async Task Main()
     {
-        var testService = new TestService();
+        var testService = new TestService(new TimerService(), new PromptService(), new ResultsService());
         Console.WriteLine("Welcome to hurry, a typing test where you want to hurry.");
         await StartCountdown();
 

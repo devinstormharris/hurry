@@ -4,7 +4,12 @@ using Timer = System.Timers.Timer;
 
 namespace hurry.Services;
 
-public class TimeService
+public interface ITimerService
+{
+    void StartTimer(Test test);
+    void StopTimer(Test test);
+}
+public class TimerService : ITimerService
 {
     private static Timer? _timer;
     private static int _seconds;

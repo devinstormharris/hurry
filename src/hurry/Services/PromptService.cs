@@ -2,7 +2,12 @@ using System.Reflection;
 
 namespace hurry.Services;
 
-public class PromptService
+public interface IPromptService
+{
+    string GetPrompt();
+}
+
+public class PromptService : IPromptService
 {
     public string GetPrompt()
     {

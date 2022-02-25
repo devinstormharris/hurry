@@ -2,7 +2,11 @@ using hurry.Models;
 
 namespace hurry.Services;
 
-public class ResultsService
+public interface IResultsService
+{
+    int CalculateWpm(Test test);
+}
+public class ResultsService : IResultsService
 {
     public int CalculateWpm(Test test)
     {
