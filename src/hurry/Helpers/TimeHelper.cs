@@ -23,12 +23,11 @@ public static class TimeHelper
         _seconds++;
     }
 
-    public static Test StopTimer(this Test test)
+    public static void StopTimer(this Test test)
     {
         _timer?.Stop();
         _timer?.Dispose();
 
         test.SecondsElapsed = _seconds;
-        return test;
     }
 }
