@@ -24,7 +24,7 @@ public class TestService
     {
         _test.UserInput = input.ToCharArray();
         _timeService.StopTimer(_test);
-        _resultsService.CalculateWpm(_test);
+        _test.Result!.Wpm = _resultsService.CalculateWpm(_test);
         _test.IsComplete = true;
     }
 
