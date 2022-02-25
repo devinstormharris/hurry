@@ -7,7 +7,6 @@ public class Test
         Result = new Results();
         Prompt = "";
         IsComplete = false;
-        CountdownTimer = 3;
         UserInput = null!;
     }
 
@@ -18,8 +17,6 @@ public class Test
     public char[] UserInput { get; set; }
 
     public int SecondsElapsed { get; set; }
-
-    public int CountdownTimer { get; set; }
 
     public bool IsComplete { get; set; }
 }
