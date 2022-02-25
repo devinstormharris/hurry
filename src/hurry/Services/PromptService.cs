@@ -1,11 +1,10 @@
 using System.Reflection;
-using hurry.Models;
 
-namespace hurry.Helpers;
+namespace hurry.Services;
 
-public static class PromptHelper
+public class PromptService
 {
-    public static string GetPrompt()
+    public string GetPrompt()
     {
         var prompts = new Dictionary<int, string>()
         {

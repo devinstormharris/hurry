@@ -2,14 +2,14 @@ using System.Timers;
 using hurry.Models;
 using Timer = System.Timers.Timer;
 
-namespace hurry.Helpers;
+namespace hurry.Services;
 
-public static class TimeHelper
+public class TimeService
 {
     private static Timer? _timer;
     private static int _seconds;
 
-    public static void StartTimer(this Test test)
+    public void StartTimer(Test test)
     {
         _seconds = test.SecondsElapsed;
         _timer = new Timer(1000);
@@ -17,13 +17,12 @@ public static class TimeHelper
         _timer.AutoReset = true;
         _timer.Enabled = true;
     }
-
-    private static void OnTimedEvent(object source, ElapsedEventArgs e)
+    private void OnTimedEvent(object source, ElapsedEventArgs e)
     {
         _seconds++;
     }
 
-    public static void StopTimer(this Test test)
+    public void StopTimer(Test test)
     {
         _timer?.Stop();
         _timer?.Dispose();

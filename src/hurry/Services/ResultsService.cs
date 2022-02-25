@@ -1,10 +1,10 @@
 using hurry.Models;
 
-namespace hurry.Helpers;
+namespace hurry.Services;
 
-public static class ResultsHelper
+public class ResultsService
 {
-    public static int CalculateWpm(this Test test)
+    public int CalculateWpm(Test test)
     {
         try
         {

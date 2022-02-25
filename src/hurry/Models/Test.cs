@@ -1,5 +1,3 @@
-using hurry.Helpers;
-
 namespace hurry.Models;
 
 public class Test
@@ -7,13 +5,13 @@ public class Test
     public Test()
     {
         Result = new Results();
-        Prompt = PromptHelper.GetPrompt();
+        Prompt = "";
         IsComplete = false;
         CountdownTimer = 3;
         UserInput = null!;
     }
 
-    public string Prompt { get; }
+    public string Prompt { get; set; }
 
     public Results? Result { get; }
 
