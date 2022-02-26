@@ -35,11 +35,10 @@ public static class Program
                 }
             }
 
-            foreach (var i in input)
+            foreach (var i in tmpInput)
             {
                 input = input + i;
             }
-            Console.WriteLine(input);
             
         }
         catch (OperationCanceledException e)

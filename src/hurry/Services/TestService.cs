@@ -41,11 +41,6 @@ public class TestService : ITestService
     }
     public string GetPrompt()
     {
-        if (_test.Prompt == null)
-        {
-            _test.Prompt = _promptService.GetPrompt();
-        }
-
-        return _test.Prompt;
+        return _test.Prompt ?? (_test.Prompt = _promptService.GetPrompt());
     }
 }
