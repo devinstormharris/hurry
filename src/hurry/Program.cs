@@ -40,19 +40,15 @@ public static class Program
                 input = input + i;
             }
             
-        }
-        catch (OperationCanceledException e)
-        {
-            // swallow
-        }
-
-        try
-        {
             await taskStart.WaitAsync(token);
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("Goodbye!");
         }
         catch (Exception e)
         {
-            Console.WriteLine($"TestService Error: {e.Message}");
+            Console.WriteLine($"Error: {e.Message}");
         }
 
         _testService.Stop(input);
