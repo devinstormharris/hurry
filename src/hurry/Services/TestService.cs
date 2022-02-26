@@ -5,7 +5,7 @@ namespace hurry.Services;
 public interface ITestService
 {
     string GetPrompt();
-    void Start();
+    Task Start(CancellationToken token);
     void Stop(string input);
     Results? GetResults();
 }
@@ -22,21 +22,15 @@ public class TestService : ITestService
         _promptService = promptService;
         _resultsService = resultsService;
     }
-    public string GetPrompt()
-    {
-        _test.Prompt = _promptService.GetPrompt();
-        return _test.Prompt;
-    }
 
-    public void Start()
+    public async Task Start(CancellationToken token)
     {
-        _timerService.StartTimer(_test);
+        await _timerService.StartTimer(_test, token);
     }
 
     public void Stop(string input)
     {
         _test.UserInput = input.ToCharArray();
-        _timerService.StopTimer(_test);
         _test.Result!.Wpm = _resultsService.CalculateWpm(_test);
         _test.IsComplete = true;
     }
@@ -44,5 +38,14 @@ public class TestService : ITestService
     public Results? GetResults()
     {
         return _test.IsComplete ? _test.Result : null;
+    }
+    public string GetPrompt()
+    {
+        if (_test.Prompt == null)
+        {
+            _test.Prompt = _promptService.GetPrompt();
+        }
+
+        return _test.Prompt;
     }
 }

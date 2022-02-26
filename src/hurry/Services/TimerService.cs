@@ -6,33 +6,13 @@ namespace hurry.Services;
 
 public interface ITimerService
 {
-    void StartTimer(Test test);
-    void StopTimer(Test test);
+    Task StartTimer(Test test, CancellationToken token);
 }
 public class TimerService : ITimerService
 {
-    private static Timer? _timer;
-    private static int _seconds;
-
-    public void StartTimer(Test test)
+    public async Task StartTimer(Test test, CancellationToken token)
     {
-        _seconds = test.SecondsElapsed;
-        _timer = new Timer(1000);
-        _timer.Elapsed += OnTimedEvent!;
-        _timer.AutoReset = true;
-        _timer.Enabled = true;
-    }
-
-    private void OnTimedEvent(object source, ElapsedEventArgs e)
-    {
-        _seconds++;
-    }
-
-    public void StopTimer(Test test)
-    {
-        _timer?.Stop();
-        _timer?.Dispose();
-
-        test.SecondsElapsed = _seconds;
+        await Task.Delay(TimeSpan.FromMinutes(1), token)
+            .ConfigureAwait(false);
     }
 }

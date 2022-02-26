@@ -4,21 +4,59 @@ namespace hurry;
 
 public static class Program
 {
+    private static readonly TestService _testService =
+        new(new TimerService(), new PromptService(), new ResultsService());
+
     private static async Task Main()
     {
-        var testService = new TestService(new TimerService(), new PromptService(), new ResultsService());
+        var cts = new CancellationTokenSource();
+        var token = cts.Token;
+
         Console.WriteLine("Welcome to hurry, a typing test where you want to hurry.");
+        Console.WriteLine("You will be given one minute to type out the prompt that you will see");
+        Console.WriteLine("If you want to end the program early, you can type 'quit'");
         await StartCountdown();
 
-        var prompt = testService.GetPrompt();
+        var prompt = _testService.GetPrompt();
         Console.WriteLine(prompt);
 
-        testService.Start();
-        var input = Console.ReadLine()!;
-        testService.Stop(input);
+        Task taskStart = _testService.Start(token);
+        var tmpInput = new List<string>();
+        var input = "";
+        try
+        {
+            while (!taskStart.IsCompleted)
+            {
+                tmpInput.Add(Console.ReadLine()!);
+                if (tmpInput.Last().ToLower() == "quit")
+                {
+                    cts.Cancel();
+                    break;
+                }
+            }
 
-        var wpm = testService.GetResults()!.Wpm;
-        Console.WriteLine($"Your WPM is {wpm}.");
+            foreach (var i in input)
+            {
+                input = input + i;
+            }
+            Console.WriteLine(input);
+            
+        }
+        catch (OperationCanceledException e)
+        {
+            // swallow
+        }
+
+        try
+        {
+            await taskStart.WaitAsync(token);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"TestService Error: {e.Message}");
+        }
+
+        _testService.Stop(input);
     }
 
     private static async Task StartCountdown()

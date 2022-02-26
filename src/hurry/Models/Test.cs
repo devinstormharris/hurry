@@ -5,12 +5,12 @@ public class Test
     public Test()
     {
         Result = new Results();
-        Prompt = "";
+        Prompt = null;
         IsComplete = false;
         UserInput = null!;
     }
 
-    public string Prompt { get; set; }
+    public string? Prompt { get; set; }
 
     public Results? Result { get; }
 
