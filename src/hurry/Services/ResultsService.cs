@@ -11,9 +11,10 @@ public class ResultsService : IResultsService
     public int CalculateWpm(Test test)
     {
         try
-        { // TODO: fix: method always returns 0
+        {
             var wordCount = test.UserInput.Length / 5;
-            test.Result!.Wpm = wordCount / test.SecondsElapsed;
+            var time = CalculateMinutes(test.SecondsElapsed);
+            test.Result!.Wpm = (int)(wordCount / time);
 
             return test.Result!.Wpm;
         }
@@ -23,4 +24,14 @@ public class ResultsService : IResultsService
             return 0;
         }
     }
+
+    private double CalculateMinutes(int seconds)
+    {
+        if (seconds >= 60) return seconds;
+        
+        var minutes = seconds / (double)60;
+        return minutes;
+
+    }
+
 }
