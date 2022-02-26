@@ -6,13 +6,19 @@ namespace hurry.Services;
 
 public interface ITimerService
 {
-    Task StartTimer(Test test, CancellationToken token);
+    Task<Test> StartTimer(Test test, CancellationToken token);
 }
 public class TimerService : ITimerService
 {
-    public async Task StartTimer(Test test, CancellationToken token)
+    public async Task<Test> StartTimer(Test test, CancellationToken token)
     {
-        await Task.Delay(TimeSpan.FromMinutes(1), token)
-            .ConfigureAwait(false);
+        for (int i = 0; i < 60; i++)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(1), token)
+                .ConfigureAwait(false);
+            test.SecondsElapsed++;
+        }
+
+        return test;
     }
 }

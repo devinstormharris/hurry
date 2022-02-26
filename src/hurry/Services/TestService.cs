@@ -31,8 +31,8 @@ public class TestService : ITestService
     public void Stop(string input)
     {
         _test.UserInput = input.ToCharArray();
-        _test.Result!.Wpm = _resultsService.CalculateWpm(_test);
         _test.IsComplete = true;
+        _test.Result!.Wpm = _resultsService.CalculateWpm(_test);
     }
 
     public Results? GetResults()

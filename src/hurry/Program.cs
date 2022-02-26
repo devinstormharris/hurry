@@ -57,6 +57,8 @@ public static class Program
         }
 
         _testService.Stop(input);
+        var results = _testService.GetResults();
+        Console.WriteLine($"You're WPM is {results!.Wpm}.");
     }
 
     private static async Task StartCountdown()

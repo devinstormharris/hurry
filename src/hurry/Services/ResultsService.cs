@@ -11,17 +11,15 @@ public class ResultsService : IResultsService
     public int CalculateWpm(Test test)
     {
         try
-        {
-            // TODO: calculate wpm accurately
-            var wordCount = test.UserInput.Length / 5L;
-            var wordsPerSecond = wordCount / test.SecondsElapsed;
-            var results = (int) wordsPerSecond * 60;
+        { // TODO: fix: method always returns 0
+            var wordCount = test.UserInput.Length / 5;
+            test.Result!.Wpm = wordCount / test.SecondsElapsed;
 
-            return results;
+            return test.Result!.Wpm;
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            Console.WriteLine("An error occurred when attempting to calculate WPM.");
+            Console.WriteLine($"An error occurred when attempting to calculate WPM. {e.Message}");
             return 0;
         }
     }
