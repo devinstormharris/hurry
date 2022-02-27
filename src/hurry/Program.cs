@@ -20,7 +20,7 @@ public static class Program
         var prompt = _testService.GetPrompt();
         Console.WriteLine(prompt);
 
-        Task taskStart = _testService.Start(token);
+        var taskStart = _testService.Start(token);
         var tmpInput = new List<string>();
         var input = "";
         try
@@ -28,6 +28,7 @@ public static class Program
             while (!taskStart.IsCompleted)
             {
                 tmpInput.Add(Console.ReadLine()!);
+                
                 if (tmpInput.Last().ToLower() == "quit")
                 {
                     cts.Cancel();
@@ -35,11 +36,7 @@ public static class Program
                 }
             }
 
-            foreach (var i in tmpInput)
-            {
-                input = input + i;
-            }
-            
+            foreach (var i in tmpInput) input += i;
             await taskStart.WaitAsync(token);
         }
         catch (OperationCanceledException)

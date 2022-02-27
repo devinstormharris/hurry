@@ -9,12 +9,13 @@ public interface ITestService
     void Stop(string input);
     Results? GetResults();
 }
+
 public class TestService : ITestService
 {
-    private readonly Test _test = new();
-    private readonly ITimerService _timerService;
     private readonly IPromptService _promptService;
     private readonly IResultsService _resultsService;
+    private readonly Test _test = new();
+    private readonly ITimerService _timerService;
 
     public TestService(ITimerService timerService, IPromptService promptService, IResultsService resultsService)
     {
@@ -39,6 +40,7 @@ public class TestService : ITestService
     {
         return _test.IsComplete ? _test.Result : null;
     }
+
     public string GetPrompt()
     {
         return _test.Prompt ?? (_test.Prompt = _promptService.GetPrompt());

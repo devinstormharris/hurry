@@ -6,6 +6,7 @@ public interface IResultsService
 {
     int CalculateWpm(Test test);
 }
+
 public class ResultsService : IResultsService
 {
     public int CalculateWpm(Test test)
@@ -14,7 +15,7 @@ public class ResultsService : IResultsService
         {
             var wordCount = test.UserInput.Length / 5;
             var time = CalculateMinutes(test.SecondsElapsed);
-            test.Result!.Wpm = (int)(wordCount / time);
+            test.Result!.Wpm = (int) (wordCount / time);
 
             return test.Result!.Wpm;
         }
@@ -25,13 +26,11 @@ public class ResultsService : IResultsService
         }
     }
 
-    private double CalculateMinutes(int seconds)
+    private static double CalculateMinutes(int seconds)
     {
         if (seconds >= 60) return seconds;
-        
-        var minutes = seconds / (double)60;
+
+        var minutes = seconds / (double) 60;
         return minutes;
-
     }
-
 }

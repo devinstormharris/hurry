@@ -11,7 +11,7 @@ public class PromptService : IPromptService
 {
     public string GetPrompt()
     {
-        var prompts = new Dictionary<int, string>()
+        var prompts = new Dictionary<int, string>
         {
             {0, "prompt1.txt"},
             {1, "prompt2.txt"}
