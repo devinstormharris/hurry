@@ -4,8 +4,8 @@ namespace hurry;
 
 public static class Program
 {
-    private static readonly TestService _testService =
-        new(new TimerService(), new PromptService(), new ResultsService());
+    private static readonly ITestService _testService =
+        new TestService(new TimerService(), new PromptService(), new ResultsService());
 
     private static async Task Main()
     {
