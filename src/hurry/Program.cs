@@ -16,17 +16,31 @@ public static class Program
         ConsoleHelper.Greet();
         await ConsoleHelper.StartCountdown();
         
-        var wpm = RunTest(testService).Result;
+        var wpm = RunTest(testService);
         Console.WriteLine($"You're WPM is {wpm}.");
     }
 
-    static async Task<int> RunTest(ITestService testService)
+    static int RunTest(ITestService testService)
+    {
+        WritePrompt(testService);
+
+        var input = StartTest(testService).Result;
+        testService.Stop(input);
+
+        var results = testService.GetResults();
+        return results!.Wpm;
+    }
+
+    static void WritePrompt(ITestService testService)
+    {
+        var prompt = testService.GetPrompt();
+        Console.WriteLine(prompt);
+    }
+
+    static async Task<string> StartTest(ITestService testService)
     {
         var cts = new CancellationTokenSource();
         var token = cts.Token;
-
-        var prompt = testService.GetPrompt();
-        Console.WriteLine(prompt);
 
         var taskStart = testService.Start(token);
         var tmpInput = new List<string>();
@@ -46,19 +60,18 @@ public static class Program
 
             foreach (var i in tmpInput) input += i;
             await taskStart.WaitAsync(token);
+
+            return input;
         }
         catch (OperationCanceledException)
         {
             Console.WriteLine("Goodbye!");
+            return input;
         }
         catch (Exception e)
         {
             Console.WriteLine($"Error: {e.Message}");
+            return null;
         }
-
-        testService.Stop(input);
-        var results = testService.GetResults();
-
-        return results!.Wpm;
     }
 }
