@@ -5,17 +5,17 @@ namespace hurry;
 
 public static class Program
 {
-    private static async Task Main(string[] args)
+    static async Task Main(string[] args)
     {
         var services = new ServiceCollection()
-            .AddSingleton<ITestService>(new TestService( new TimerService(), new PromptService(), new ResultsService()));
+            .AddSingleton<ITestService>(new TestService(new TimerService(), new PromptService(), new ResultsService()));
 
-        using var serviceProvider = services.BuildServiceProvider();
-        ITestService testService = serviceProvider.GetService<ITestService>()!;
+        await using var serviceProvider = services.BuildServiceProvider();
+        var testService = serviceProvider.GetService<ITestService>()!;
 
         ConsoleHelper.Greet();
         await ConsoleHelper.StartCountdown();
-        
+
         var wpm = RunTest(testService);
         Console.WriteLine($"You're WPM is {wpm}.");
     }
