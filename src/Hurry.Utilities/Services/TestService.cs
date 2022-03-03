@@ -1,14 +1,6 @@
-using hurry.Models;
+using Hurry.Utilities.Models;
 
-namespace hurry.Services;
-
-public interface ITestService
-{
-    string GetPrompt();
-    Task Start(CancellationToken token);
-    void Stop(string input);
-    Results? GetResults();
-}
+namespace Hurry.Utilities.Services;
 
 public class TestService : ITestService
 {
