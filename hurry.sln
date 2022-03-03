@@ -2,7 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E5846AC0-320A-440E-84D6-86BFC3539FA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hurry", "src\hurry\hurry.csproj", "{34AEC8E3-DB21-4574-9C9D-592C4CE190EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurry.Utilities", "src\Hurry.Utilities\Hurry.Utilities.csproj", "{30066BC9-9907-4333-B186-A6F2B508FA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurry.Console", "src\Hurry.Console\Hurry.Console.csproj", "{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,12 +12,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{34AEC8E3-DB21-4574-9C9D-592C4CE190EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34AEC8E3-DB21-4574-9C9D-592C4CE190EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34AEC8E3-DB21-4574-9C9D-592C4CE190EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34AEC8E3-DB21-4574-9C9D-592C4CE190EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30066BC9-9907-4333-B186-A6F2B508FA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30066BC9-9907-4333-B186-A6F2B508FA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30066BC9-9907-4333-B186-A6F2B508FA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30066BC9-9907-4333-B186-A6F2B508FA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{34AEC8E3-DB21-4574-9C9D-592C4CE190EB} = {E5846AC0-320A-440E-84D6-86BFC3539FA8}
+		{30066BC9-9907-4333-B186-A6F2B508FA09} = {E5846AC0-320A-440E-84D6-86BFC3539FA8}
+		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976} = {E5846AC0-320A-440E-84D6-86BFC3539FA8}
 	EndGlobalSection
 EndGlobal

@@ -1,11 +1,6 @@
 using System.Reflection;
 
-namespace hurry.Services;
-
-public interface IPromptService
-{
-    string GetPrompt();
-}
+namespace Hurry.Utilities.Services;
 
 public class PromptService : IPromptService
 {

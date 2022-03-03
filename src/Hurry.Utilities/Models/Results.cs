@@ -1,4 +1,4 @@
-namespace hurry.Models;
+namespace Hurry.Utilities.Models;
 
 public class Results
 {

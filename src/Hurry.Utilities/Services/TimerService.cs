@@ -1,11 +1,6 @@
-using hurry.Models;
+using Hurry.Utilities.Models;
 
-namespace hurry.Services;
-
-public interface ITimerService
-{
-    Task<Test> StartTimer(Test test, CancellationToken token);
-}
+namespace Hurry.Utilities.Services;
 
 public class TimerService : ITimerService
 {

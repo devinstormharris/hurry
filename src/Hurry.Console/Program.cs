@@ -1,7 +1,7 @@
-﻿using hurry.Services;
+﻿using Hurry.Utilities.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace hurry;
+namespace Hurry.Console;
 
 public static class Program
 {
@@ -10,14 +10,14 @@ public static class Program
         var services = new ServiceCollection()
             .AddSingleton<ITestService>(new TestService(new TimerService(), new PromptService(), new ResultsService()));
 
-        await using var serviceProvider = services.BuildServiceProvider();
+        using var serviceProvider = services.BuildServiceProvider();
         var testService = serviceProvider.GetService<ITestService>()!;
 
         ConsoleHelper.Greet();
         await ConsoleHelper.StartCountdown();
 
         var wpm = RunTest(testService);
-        Console.WriteLine($"You're WPM is {wpm}.");
+        System.Console.WriteLine($"You're WPM is {wpm}.");
     }
 
     static int RunTest(ITestService testService)
@@ -34,7 +34,7 @@ public static class Program
     static void WritePrompt(ITestService testService)
     {
         var prompt = testService.GetPrompt();
-        Console.WriteLine(prompt);
+        System.Console.WriteLine(prompt);
     }
 
     static async Task<string> StartTest(ITestService testService)
@@ -49,7 +49,7 @@ public static class Program
         {
             while (!taskStart.IsCompleted)
             {
-                tmpInput.Add(Console.ReadLine()!);
+                tmpInput.Add(System.Console.ReadLine()!);
 
                 if (tmpInput.Last().ToLower() == "quit")
                 {
@@ -65,12 +65,12 @@ public static class Program
         }
         catch (OperationCanceledException)
         {
-            Console.WriteLine("Goodbye!");
+            System.Console.WriteLine("Goodbye!");
             return input;
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error: {e.Message}");
+            System.Console.WriteLine($"Error: {e.Message}");
             return null;
         }
     }
