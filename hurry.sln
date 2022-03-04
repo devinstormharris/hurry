@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E5846AC0-320A-440E-84D6-86BFC3539FA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurry.Utilities", "src\Hurry.Utilities\Hurry.Utilities.csproj", "{30066BC9-9907-4333-B186-A6F2B508FA09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hurry.Utilities", "src\Hurry.Utilities\Hurry.Utilities.csproj", "{30066BC9-9907-4333-B186-A6F2B508FA09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurry.Console", "src\Hurry.Console\Hurry.Console.csproj", "{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hurry.Console", "src\Hurry.Console\Hurry.Console.csproj", "{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurry.Tests", "src\Hurry.Tests\Hurry.Tests.csproj", "{CD025A8A-C9EC-4735-98C9-DF461F8869FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +25,20 @@ Global
 		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD025A8A-C9EC-4735-98C9-DF461F8869FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD025A8A-C9EC-4735-98C9-DF461F8869FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD025A8A-C9EC-4735-98C9-DF461F8869FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD025A8A-C9EC-4735-98C9-DF461F8869FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{30066BC9-9907-4333-B186-A6F2B508FA09} = {E5846AC0-320A-440E-84D6-86BFC3539FA8}
 		{2BE64B19-ADDA-4AE7-BD8A-C6C037697976} = {E5846AC0-320A-440E-84D6-86BFC3539FA8}
+		{CD025A8A-C9EC-4735-98C9-DF461F8869FA} = {E5846AC0-320A-440E-84D6-86BFC3539FA8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F4097FF-2992-4171-9703-867FADB37F6A}
 	EndGlobalSection
 EndGlobal
