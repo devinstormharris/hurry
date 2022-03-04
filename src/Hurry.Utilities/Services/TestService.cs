@@ -1,4 +1,5 @@
 using Hurry.Utilities.Models;
+using Hurry.Utilities.Services.Interfaces;
 
 namespace Hurry.Utilities.Services;
 

@@ -1,9 +1,8 @@
 ﻿using Hurry.Utilities.Models;
 
-namespace Hurry.Utilities.Services
+namespace Hurry.Utilities.Services.Interfaces;
+
+public interface ITimerService
 {
-    public interface ITimerService
-    {
-        Task<Test> StartTimer(Test test, CancellationToken token);
-    }
+    Task<Test> StartTimer(Test test, CancellationToken token);
 }

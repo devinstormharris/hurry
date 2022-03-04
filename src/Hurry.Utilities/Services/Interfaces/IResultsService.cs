@@ -1,9 +1,8 @@
 ﻿using Hurry.Utilities.Models;
 
-namespace Hurry.Utilities.Services
+namespace Hurry.Utilities.Services.Interfaces;
+
+public interface IResultsService
 {
-    public interface IResultsService
-    {
-        int CalculateWpm(Test test);
-    }
+    int CalculateWpm(Test test);
 }

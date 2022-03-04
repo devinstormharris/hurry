@@ -1,55 +1,50 @@
 ﻿using Hurry.Utilities.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Hurry.Utilities.Services.Interfaces;
 
-namespace Hurry.Console.Helpers
+namespace Hurry.Console.Helpers;
+
+public static class TestHelper
 {
-    public static class TestHelper
+    private static string _input;
+
+    public static async Task RunTest(this ITestService testService)
     {
-        private static string _input;
+        await ConsoleHelper.StartCountdown();
 
-        public static async Task RunTest(this ITestService testService)
+        testService.WritePrompt();
+
+        var cts = new CancellationTokenSource();
+        var token = cts.Token;
+
+        var taskStart = testService.Start(token);
+        var input = new List<string>();
+        try
         {
-            await ConsoleHelper.StartCountdown();
-
-            testService.WritePrompt();
-
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-
-            var taskStart = testService.Start(token);
-            var input = new List<string>();
-            try
+            while (!taskStart.IsCompleted)
             {
-                while (!taskStart.IsCompleted)
+                input.Add(System.Console.ReadLine()!);
+
+                if (input.Last().ToLower() == "quit")
                 {
-                    input.Add(System.Console.ReadLine()!);
-
-                    if (input.Last().ToLower() == "quit")
-                    {
-                        cts.Cancel();
-                        break;
-                    }
+                    cts.Cancel();
+                    break;
                 }
-
-                foreach (var i in input) _input += i;
-                await taskStart.WaitAsync(token);
-            }
-            catch (OperationCanceledException)
-            {
-                System.Console.WriteLine("Ending test.");
-            }
-            catch (Exception exception)
-            {
-                System.Console.WriteLine($"Error: {exception.Message}");
             }
 
-            testService.Stop(_input);
-
-            testService.WriteResults();
+            foreach (var i in input) _input += i;
+            await taskStart.WaitAsync(token);
         }
+        catch (OperationCanceledException)
+        {
+            System.Console.WriteLine("Ending test.");
+        }
+        catch (Exception exception)
+        {
+            System.Console.WriteLine($"Error: {exception.Message}");
+        }
+
+        testService.Stop(_input);
+
+        testService.WriteResults();
     }
 }

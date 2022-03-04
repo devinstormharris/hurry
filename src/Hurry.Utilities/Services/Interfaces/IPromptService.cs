@@ -1,7 +1,6 @@
-﻿namespace Hurry.Utilities.Services
+﻿namespace Hurry.Utilities.Services.Interfaces;
+
+public interface IPromptService
 {
-    public interface IPromptService
-    {
-        string? GetPrompt();
-    }
+    string? GetPrompt();
 }

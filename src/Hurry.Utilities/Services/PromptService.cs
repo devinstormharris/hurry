@@ -1,4 +1,5 @@
 using System.Reflection;
+using Hurry.Utilities.Services.Interfaces;
 
 namespace Hurry.Utilities.Services;
 
