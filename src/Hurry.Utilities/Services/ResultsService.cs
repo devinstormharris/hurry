@@ -7,19 +7,11 @@ public class ResultsService : IResultsService
 {
     public int CalculateWpm(Test test)
     {
-        try
-        {
-            var wordCount = test.UserInput.Length / 5;
-            var time = CalculateMinutes(test.SecondsElapsed);
-            test.Result!.Wpm = (int) (wordCount / time);
+        var wordCount = test.UserInput.Length / 5;
+        var time = CalculateMinutes(test.SecondsElapsed);
+        test.Result!.Wpm = (int) (wordCount / time);
 
-            return test.Result!.Wpm;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"An error occurred when attempting to calculate WPM. {e.Message}");
-            return 0;
-        }
+        return test.Result!.Wpm;
     }
 
     private static double CalculateMinutes(int seconds)
