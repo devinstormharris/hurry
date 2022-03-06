@@ -16,7 +16,7 @@ public static class TestHelper
         var cts = new CancellationTokenSource();
         var token = cts.Token;
 
-        var taskStart = testService.Start(token);
+        var taskStart = testService.StartTimer(token);
         var input = new List<string>();
         try
         {
@@ -43,7 +43,7 @@ public static class TestHelper
             System.Console.WriteLine($"Error: {exception.Message}");
         }
 
-        testService.Stop(_input);
+        testService.CalculateWpm(_input);
 
         testService.WriteResults();
     }

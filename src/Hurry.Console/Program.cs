@@ -12,7 +12,7 @@ public static class Program
     private static async Task Main()
     {
         var services = new ServiceCollection()
-            .AddSingleton<ITestService>(new TestService(new TimerService(), new PromptService(), new ResultsService()));
+            .AddSingleton<ITestService>(new TestService());
 
         await using var serviceProvider = services.BuildServiceProvider();
         _testService = serviceProvider.GetService<ITestService>()!;

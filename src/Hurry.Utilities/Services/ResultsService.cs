@@ -10,14 +10,19 @@ public class ResultsService : IResultsService
     /// We divide word count by time elapsed to determine WPM.
     /// </summary>
     /// <param name="test">User's test data.</param>
+    /// <param name="input">User's input data.</param>
     /// <returns>User's WPM.</returns>
-    public int CalculateWpm(Test test)
+    public Test CalculateWpm(Test test, string input)
     {
+        test.UserInput = input.ToCharArray();
+        test.IsComplete = true;
+        
         var wordCount = CalculateWordCount(test);
         var time = CalculateMinutes(test);
+        
         test.Result!.Wpm = (int) (wordCount / time);
 
-        return test.Result!.Wpm;
+        return test;
     }
     
     /// <summary>

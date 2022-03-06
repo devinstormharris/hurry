@@ -4,5 +4,5 @@ namespace Hurry.Utilities.Services.Interfaces;
 
 public interface IResultsService
 {
-    int CalculateWpm(Test test);
+    Test CalculateWpm(Test test, string input);
 }

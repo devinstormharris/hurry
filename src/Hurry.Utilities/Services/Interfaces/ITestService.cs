@@ -4,8 +4,8 @@ namespace Hurry.Utilities.Services.Interfaces;
 
 public interface ITestService
 {
-    Task Start(CancellationToken token);
-    void Stop(string input);
+    Task StartTimer(CancellationToken token);
+    void CalculateWpm(string input);
     Results? GetResults();
     string GetPrompt();
 }

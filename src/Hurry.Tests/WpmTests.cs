@@ -9,8 +9,7 @@ namespace Hurry.Tests;
 /// </summary>
 public class WpmTests
 {
-    private ResultsService _resultsService;
-    private Test _test;
+    private TestService _testService;
     
     /// <summary>
     /// Initializes ResultsService
@@ -19,8 +18,7 @@ public class WpmTests
     public void Setup()
     {
         // We are creating new test results.
-        _resultsService = new ResultsService();
-        _test = new Test();
+        _testService = new TestService();
     }
     
     /// <summary>
@@ -29,11 +27,12 @@ public class WpmTests
     [Test]
     public void TimeElapsedLessThan60()
     {
-        _test.UserInput = CreateInput(20);
-        _test.SecondsElapsed = 20;
+        var input = CreateInput(20);
         
-        var wpm = _resultsService.CalculateWpm(_test);
-        Assert.AreEqual(60, wpm);
+        _testService.Test.SecondsElapsed = 20;
+        _testService.CalculateWpm(input);
+        
+        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }
     
     /// <summary>
@@ -42,11 +41,12 @@ public class WpmTests
     [Test]
     public void TimeElapsedMoreThan60()
     {
-        _test.UserInput = CreateInput(80);
-        _test.SecondsElapsed = 80;
+        var input = CreateInput(80);
         
-        var wpm = _resultsService.CalculateWpm(_test);
-        Assert.AreEqual(60, wpm);
+        _testService.Test.SecondsElapsed = 80;
+        _testService.CalculateWpm(input);
+        
+        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }
 
     /// <summary>
@@ -54,15 +54,15 @@ public class WpmTests
     /// </summary>
     /// <param name="wordCount">Amount of words desired.</param>
     /// <returns>Array of chars indicating word count.</returns>
-    private static char[] CreateInput(int wordCount)
+    private static string CreateInput(int wordCount)
     {
-        var input = "";
+        var result = "";
 
         for (var i = 0; i < wordCount; i++)
         {
-            input += "word!";
+            result += "word!";
         }
 
-        return input.ToCharArray();
+        return result;
     }
 }

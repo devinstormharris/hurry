@@ -7,35 +7,35 @@ public class TestService : ITestService
 {
     private readonly IPromptService _promptService;
     private readonly IResultsService _resultsService;
-    private readonly Test _test = new();
     private readonly ITimerService _timerService;
+    
+    public Test Test = new();
 
-    public TestService(ITimerService timerService, IPromptService promptService, IResultsService resultsService)
+
+    public TestService()
     {
-        _timerService = timerService;
-        _promptService = promptService;
-        _resultsService = resultsService;
+        _timerService = new TimerService();
+        _promptService = new PromptService();
+        _resultsService = new ResultsService();
     }
 
-    public async Task Start(CancellationToken token)
+    public async Task StartTimer(CancellationToken token)
     {
-        await _timerService.StartTimer(_test, token);
+       Test = await _timerService.StartTimer(Test, token);
     }
 
-    public void Stop(string input)
+    public void CalculateWpm(string input)
     {
-        _test.UserInput = input.ToCharArray();
-        _test.IsComplete = true;
-        _test.Result!.Wpm = _resultsService.CalculateWpm(_test);
+        Test = _resultsService.CalculateWpm(Test, input);
     }
 
     public Results? GetResults()
     {
-        return _test.IsComplete ? _test.Result : null;
+        return Test.IsComplete ? Test.Result : null;
     }
 
     public string GetPrompt()
     {
-        return _test.Prompt ?? (_test.Prompt = _promptService.GetPrompt());
+        return Test.Prompt ?? (Test.Prompt = _promptService.GetPrompt());
     }
 }
