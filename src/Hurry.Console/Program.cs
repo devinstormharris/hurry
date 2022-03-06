@@ -6,12 +6,12 @@ namespace Hurry.Console;
 
 public static class Program
 {
-    private static TestService _testService;
+    private static TestService _testService = null!;
 
     private static async Task Main()
     {
         var services = new ServiceCollection()
-            .AddSingleton<TestService>(new TestService());
+            .AddSingleton(new TestService());
 
         await using var serviceProvider = services.BuildServiceProvider();
         _testService = serviceProvider.GetService<TestService>()!;

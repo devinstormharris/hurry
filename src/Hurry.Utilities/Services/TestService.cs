@@ -6,7 +6,7 @@ public class TestService
 {
     private readonly ResultsService _resultsService;
     private readonly TimerService _timerService;
-    
+
     public Test Test = new();
 
 
@@ -18,7 +18,7 @@ public class TestService
 
     public async Task StartTimer(CancellationToken token)
     {
-       Test = await _timerService.StartTimer(Test, token);
+        Test = await _timerService.StartTimer(Test, token);
     }
 
     public void CalculateWpm(string input)

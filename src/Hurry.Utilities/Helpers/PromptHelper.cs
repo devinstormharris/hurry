@@ -1,6 +1,6 @@
-namespace Hurry.Utilities.Helpers;
-
 using System.Reflection;
+
+namespace Hurry.Utilities.Helpers;
 
 public static class PromptHelper
 {
