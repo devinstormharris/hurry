@@ -5,8 +5,6 @@ namespace Hurry.Console.Helpers;
 
 public static class TestHelper
 {
-    private static string _input;
-
     public static async Task RunTest(this ITestService testService)
     {
         await ConsoleHelper.StartCountdown();
@@ -18,6 +16,8 @@ public static class TestHelper
 
         var taskStart = testService.StartTimer(token);
         var input = new List<string>();
+        var result = "";
+
         try
         {
             while (!taskStart.IsCompleted)
@@ -31,20 +31,19 @@ public static class TestHelper
                 }
             }
 
-            foreach (var i in input) _input += i;
+            foreach (var i in input) result += i;
             await taskStart.WaitAsync(token);
         }
         catch (OperationCanceledException)
         {
-            System.Console.WriteLine("Ending test.");
+            // swallow
         }
         catch (Exception exception)
         {
             System.Console.WriteLine($"Error: {exception.Message}");
         }
 
-        testService.CalculateWpm(_input);
-
+        testService.CalculateWpm(result);
         testService.WriteResults();
     }
 }
