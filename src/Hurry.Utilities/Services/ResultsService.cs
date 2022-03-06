@@ -1,9 +1,8 @@
 using Hurry.Utilities.Models;
-using Hurry.Utilities.Services.Interfaces;
 
 namespace Hurry.Utilities.Services;
 
-public class ResultsService : IResultsService
+public class ResultsService
 {
     /// <summary>
     /// Determines WPM.

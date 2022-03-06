@@ -1,13 +1,11 @@
 using Hurry.Utilities.Models;
-using Hurry.Utilities.Services.Interfaces;
 
 namespace Hurry.Utilities.Services;
 
-public class TestService : ITestService
+public class TestService
 {
-    private readonly IPromptService _promptService;
-    private readonly IResultsService _resultsService;
-    private readonly ITimerService _timerService;
+    private readonly ResultsService _resultsService;
+    private readonly TimerService _timerService;
     
     public Test Test = new();
 
@@ -15,7 +13,6 @@ public class TestService : ITestService
     public TestService()
     {
         _timerService = new TimerService();
-        _promptService = new PromptService();
         _resultsService = new ResultsService();
     }
 
@@ -27,15 +24,5 @@ public class TestService : ITestService
     public void CalculateWpm(string input)
     {
         Test = _resultsService.CalculateWpm(Test, input);
-    }
-
-    public Results? GetResults()
-    {
-        return Test.IsComplete ? Test.Result : null;
-    }
-
-    public string GetPrompt()
-    {
-        return Test.Prompt ?? (Test.Prompt = _promptService.GetPrompt());
     }
 }

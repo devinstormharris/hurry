@@ -1,9 +1,8 @@
 using Hurry.Utilities.Models;
-using Hurry.Utilities.Services.Interfaces;
 
 namespace Hurry.Utilities.Services;
 
-public class TimerService : ITimerService
+public class TimerService
 {
     public async Task<Test> StartTimer(Test test, CancellationToken token)
     {

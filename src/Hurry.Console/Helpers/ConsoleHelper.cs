@@ -1,17 +1,17 @@
-﻿using Hurry.Utilities.Services.Interfaces;
+﻿using Hurry.Utilities.Services;
 
 namespace Hurry.Console.Helpers;
 
 public static class ConsoleHelper
 {
-    public static void Greet(this ITestService testService)
+    public static void Greet(this TestService testService)
     {
         System.Console.WriteLine("Welcome to hurry, a typing test where you want to hurry.");
         System.Console.WriteLine("You will be given one minute to type out the prompt that you will see.");
         System.Console.WriteLine("If you want to end the program early, you can type 'quit'.");
     }
 
-    public static async Task StartCountdown()
+    public static async Task StartCountdown(this TestService testService)
     {
         for (var i = 3; i > 0; i--)
         {
@@ -22,13 +22,13 @@ public static class ConsoleHelper
         System.Console.WriteLine("Starting test.");
     }
 
-    public static void WriteResults(this ITestService test)
+    public static void WriteResults(this TestService testService)
     {
-        System.Console.WriteLine($"You're WPM is {test.GetResults()!.Wpm}.");
+        System.Console.WriteLine($"You're WPM is {testService.Test.Result!.Wpm}.");
     }
 
-    public static void WritePrompt(this ITestService test)
+    public static void WritePrompt(this TestService testService)
     {
-        System.Console.WriteLine(test.GetPrompt());
+        System.Console.WriteLine(testService.Test.Prompt);
     }
 }

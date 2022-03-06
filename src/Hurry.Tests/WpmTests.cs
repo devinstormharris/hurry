@@ -9,7 +9,7 @@ namespace Hurry.Tests;
 /// </summary>
 public class WpmTests
 {
-    private TestService _testService;
+    private TestService _testService = null!;
     
     /// <summary>
     /// Initializes ResultsService

@@ -1,3 +1,5 @@
+using Hurry.Utilities.Helpers;
+
 namespace Hurry.Utilities.Models;
 
 public class Test
@@ -5,7 +7,7 @@ public class Test
     public Test()
     {
         Result = new Results();
-        Prompt = null;
+        Prompt = PromptHelper.GetPrompt();
         IsComplete = false;
         UserInput = null!;
     }

@@ -1,14 +1,12 @@
 ﻿using Hurry.Utilities.Services;
-using Hurry.Utilities.Services.Interfaces;
 
 namespace Hurry.Console.Helpers;
 
 public static class TestHelper
 {
-    public static async Task RunTest(this ITestService testService)
+    public static async Task RunTest(this TestService testService)
     {
-        await ConsoleHelper.StartCountdown();
-
+        await testService.StartCountdown();
         testService.WritePrompt();
 
         var cts = new CancellationTokenSource();
