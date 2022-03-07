@@ -6,7 +6,7 @@ public class TimerService
 {
     public async Task<Test> StartTimer(Test test, CancellationToken token)
     {
-        for (var i = 0; i < 60; i++)
+        while(!token.IsCancellationRequested)
         {
             await Task.Delay(TimeSpan.FromSeconds(1), token)
                 .ConfigureAwait(false);
