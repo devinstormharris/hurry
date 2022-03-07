@@ -6,12 +6,14 @@ public static class TestHelper
 {
     public static async Task RunTest(this TestService testService)
     {
-        await testService.StartCountdown();
-        testService.WritePrompt();
-
+        ConsoleHelper.WaitForActivity();
+        
+        await ConsoleHelper.StartCountdown();
+        ConsoleHelper.WritePrompt(testService.Test.Prompt);
+        
         _ = testService.StartTimer();
 
-        var input = System.Console.ReadLine();
+        var input = ConsoleHelper.GetUserInput();
         testService.StopTimer();
 
         testService.CalculateWpm(input);
