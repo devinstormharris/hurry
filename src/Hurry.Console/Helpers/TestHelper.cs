@@ -9,10 +9,8 @@ public static class TestHelper
         await testService.StartCountdown();
         testService.WritePrompt();
 
-
-
         _ = testService.StartTimer();
-        
+
         var input = System.Console.ReadLine();
         testService.StopTimer();
 
