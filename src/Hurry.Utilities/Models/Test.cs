@@ -8,7 +8,6 @@ public class Test
     {
         Result = new Results();
         Prompt = PromptHelper.GetPrompt();
-        IsComplete = false;
         UserInput = null!;
     }
 
@@ -19,6 +18,4 @@ public class Test
     public char[] UserInput { get; set; }
 
     public int SecondsElapsed { get; set; }
-
-    public bool IsComplete { get; set; }
 }

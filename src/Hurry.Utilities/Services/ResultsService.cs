@@ -14,7 +14,6 @@ public class ResultsService
     public Test CalculateWpm(Test test, string input)
     {
         test.UserInput = input.ToCharArray();
-        test.IsComplete = true;
 
         var wordCount = CalculateWordCount(test);
         var time = CalculateMinutes(test);

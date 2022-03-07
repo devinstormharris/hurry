@@ -16,9 +16,14 @@ public class TestService
         _resultsService = new ResultsService();
     }
 
-    public async Task StartTimer(CancellationToken token)
+    public async Task StartTimer()
     {
-        Test = await _timerService.StartTimer(Test, token);
+        Test = await _timerService.StartTimer(Test);
+    }
+
+    public void StopTimer()
+    {
+        _timerService.StopTimer();
     }
 
     public void CalculateWpm(string input)

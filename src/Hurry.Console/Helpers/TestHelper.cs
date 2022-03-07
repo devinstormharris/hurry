@@ -6,42 +6,17 @@ public static class TestHelper
 {
     public static async Task RunTest(this TestService testService)
     {
-        await testService.StartCountdown();
-        testService.WritePrompt();
+        ConsoleHelper.WaitForActivity();
+        
+        await ConsoleHelper.StartCountdown();
+        ConsoleHelper.WritePrompt(testService.Test.Prompt);
+        
+        _ = testService.StartTimer();
 
-        var cts = new CancellationTokenSource();
-        var token = cts.Token;
+        var input = ConsoleHelper.GetUserInput();
+        testService.StopTimer();
 
-        var taskStart = testService.StartTimer(token);
-        var input = new List<string>();
-        var result = "";
-
-        try
-        {
-            while (!taskStart.IsCompleted)
-            {
-                input.Add(System.Console.ReadLine()!);
-
-                if (input.Last().ToLower() == "quit")
-                {
-                    cts.Cancel();
-                    break;
-                }
-            }
-
-            foreach (var i in input) result += i;
-            await taskStart.WaitAsync(token);
-        }
-        catch (OperationCanceledException)
-        {
-            // swallow
-        }
-        catch (Exception exception)
-        {
-            System.Console.WriteLine($"Error: {exception.Message}");
-        }
-
-        testService.CalculateWpm(result);
+        testService.CalculateWpm(input);
         testService.WriteResults();
     }
 }
