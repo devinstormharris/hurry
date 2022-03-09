@@ -14,7 +14,7 @@ public static class ConsoleHelper
 
         System.Console.WriteLine("The console is waiting for activity. Press any key to start the test.");
     }
-    
+
     public static void WriteResults(this TestService testService)
     {
         System.Console.WriteLine($"You're WPM is {testService.Test.Result!.Wpm}.");
@@ -25,7 +25,6 @@ public static class ConsoleHelper
         System.Console.WriteLine("\n******************** BEGINNING OF PROMPT ********************");
         System.Console.WriteLine(prompt);
         System.Console.WriteLine("*********************** END OF PROMPT ***********************\n");
-
     }
 
     public static void WaitForActivity()
@@ -33,7 +32,7 @@ public static class ConsoleHelper
         System.Console.ReadKey();
         System.Console.WriteLine("\n");
     }
-    
+
     public static async Task StartCountdown()
     {
         System.Console.Write("Starting test in ");
