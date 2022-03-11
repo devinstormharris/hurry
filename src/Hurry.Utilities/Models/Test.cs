@@ -7,15 +7,13 @@ public class Test
     public Test()
     {
         Result = new Results();
+        Response = new Response();
         Prompt = PromptHelper.GetPrompt();
-        UserInput = null!;
     }
 
     public string? Prompt { get; set; }
 
     public Results? Result { get; }
 
-    public char[] UserInput { get; set; }
-
-    public int SecondsElapsed { get; set; }
+    public Response Response { get; set; }
 }
