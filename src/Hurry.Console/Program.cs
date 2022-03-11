@@ -16,7 +16,6 @@ public static class Program
         await using var serviceProvider = services.BuildServiceProvider();
         _testService = serviceProvider.GetService<TestService>()!;
 
-        _testService.Greet();
-        await _testService.RunTest();
+        await _testService.Start();
     }
 }

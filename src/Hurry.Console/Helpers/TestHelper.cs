@@ -1,22 +1,33 @@
-﻿using Hurry.Utilities.Services;
+﻿using Hurry.Utilities.Models;
+using Hurry.Utilities.Services;
 
 namespace Hurry.Console.Helpers;
 
 public static class TestHelper
 {
-    public static async Task RunTest(this TestService testService)
+    public static async Task Start(this TestService testService)
     {
-        ConsoleHelper.WaitForActivity();
-
-        await ConsoleHelper.StartCountdown();
-        ConsoleHelper.WritePrompt(testService.Test.Prompt);
-
+        testService.Greet();
+        await testService.Prep();
+        
         _ = testService.StartTimer();
+        testService.Test.Response.UserInput = testService.GetUserInput()!;
+        
+        testService.Stop();
+    }
 
-        var input = ConsoleHelper.GetUserInput();
+    private static async Task Prep(this TestService testService)
+    {
+        testService.WaitForActivity();
+        await testService.Countdown();
+        
+        testService.WritePrompt(testService.Test.Prompt);
+    }
+
+    private static void Stop(this TestService testService)
+    {
         testService.StopTimer();
-
-        testService.CalculateWpm(input);
+        testService.CalculateWpm();
         testService.WriteResults();
     }
 }
