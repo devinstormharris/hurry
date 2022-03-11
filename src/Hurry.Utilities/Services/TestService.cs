@@ -26,8 +26,8 @@ public class TestService
         _timerService.StopTimer();
     }
 
-    public void CalculateWpm(string input)
+    public void CalculateWpm()
     {
-        Test = _wpmService.CalculateWpm(Test, input);
+        Test = _wpmService.CalculateWpm(Test);
     }
 }

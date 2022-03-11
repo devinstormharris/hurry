@@ -7,13 +7,13 @@ public class WpmServiceTests
 {
     #region Helpers
     
-    private static string CreateInput(int wordCount)
+    private static char[] CreateInput(int wordCount)
     {
         var result = "";
 
         for (var i = 0; i < wordCount; i++) result += "word!";
 
-        return result;
+        return result.ToCharArray();
     }
 
     #endregion
@@ -37,8 +37,9 @@ public class WpmServiceTests
     {
         var input = CreateInput(20);
 
+        _testService.Test.Response.UserInput = CreateInput(20);
         _testService.Test.Response.SecondsElapsed = 20;
-        _testService.CalculateWpm(input);
+        _testService.CalculateWpm();
 
         Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }
@@ -46,10 +47,9 @@ public class WpmServiceTests
     [Test]
     public void WpmServiceTests_TimeElapsedMoreThan60()
     {
-        var input = CreateInput(80);
-
+        _testService.Test.Response.UserInput = CreateInput(80);
         _testService.Test.Response.SecondsElapsed = 80;
-        _testService.CalculateWpm(input);
+        _testService.CalculateWpm();
 
         Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }

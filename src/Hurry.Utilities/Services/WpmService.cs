@@ -4,10 +4,8 @@ namespace Hurry.Utilities.Services;
 
 public class WpmService
 {
-    public Test CalculateWpm(Test test, string input)
+    public Test CalculateWpm(Test test)
     {
-        test.Response.UserInput = input.ToCharArray();
-
         var wordCount = test.Response.UserInput.Length / 5;
         var time = CalculateMinutes(test);
 
