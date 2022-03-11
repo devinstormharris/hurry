@@ -1,8 +1,8 @@
-﻿using Hurry.Utilities.Services;
+using Hurry.Utilities.Services;
 
 namespace Hurry.Console.Helpers;
 
-public static class ConsoleHelper
+public static class WelcomeHelper
 {
     public static void Greet(this TestService testService)
     {
@@ -14,38 +14,27 @@ public static class ConsoleHelper
 
         System.Console.WriteLine("The console is waiting for activity. Press any key to start the test.");
     }
-
+    
     public static void WriteResults(this TestService testService)
     {
         System.Console.WriteLine($"You're WPM is {testService.Test.Result!.Wpm}.");
     }
-
-    public static void WritePrompt(string? prompt)
+    
+    public static void WritePrompt(this TestService testService, string? prompt)
     {
         System.Console.WriteLine("\n******************** BEGINNING OF PROMPT ********************");
         System.Console.WriteLine(prompt);
         System.Console.WriteLine("*********************** END OF PROMPT ***********************\n");
     }
-
-    public static void WaitForActivity()
-    {
-        System.Console.ReadKey();
-        System.Console.WriteLine("\n");
-    }
-
-    public static async Task StartCountdown()
+    
+    public static async Task Countdown(this TestService testService)
     {
         System.Console.Write("Starting test in ");
+        
         for (var i = 3; i > 0; i--)
         {
             System.Console.Write($"{i}... ");
             await Task.Delay(TimeSpan.FromSeconds(1));
         }
-    }
-
-    public static string? GetUserInput()
-    {
-        System.Console.WriteLine("Begin typing: ");
-        return System.Console.ReadLine();
     }
 }
