@@ -4,7 +4,7 @@ namespace Hurry.Utilities.Services;
 
 public class TestService
 {
-    private readonly ResultsService _resultsService;
+    private readonly WpmService _wpmService;
     private readonly TimerService _timerService;
 
     public Test Test = new();
@@ -13,7 +13,7 @@ public class TestService
     public TestService()
     {
         _timerService = new TimerService();
-        _resultsService = new ResultsService();
+        _wpmService = new WpmService();
     }
 
     public async Task StartTimer()
@@ -28,6 +28,6 @@ public class TestService
 
     public void CalculateWpm(string input)
     {
-        Test = _resultsService.CalculateWpm(Test, input);
+        Test = _wpmService.CalculateWpm(Test, input);
     }
 }
