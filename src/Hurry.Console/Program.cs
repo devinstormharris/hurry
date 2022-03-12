@@ -11,7 +11,7 @@ public static class Program
     private static async Task Main()
     {
         var services = new ServiceCollection()
-            .AddSingleton(new TestService());
+            .AddSingleton(TestService.GetInstance());
 
         await using var serviceProvider = services.BuildServiceProvider();
         _testService = serviceProvider.GetService<TestService>()!;

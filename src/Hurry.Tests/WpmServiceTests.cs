@@ -25,7 +25,7 @@ public class WpmServiceTests
     [SetUp]
     public void Setup()
     {
-        _testService = new TestService();
+        _testService = TestService.GetInstance();
     }
 
     #endregion
@@ -35,8 +35,6 @@ public class WpmServiceTests
     [Test]
     public void WpmServiceTests_TimeElapsedLessThan60()
     {
-        var input = CreateInput(20);
-
         _testService.Test.Response.UserInput = CreateInput(20);
         _testService.Test.Response.SecondsElapsed = 20;
         _testService.CalculateWpm();

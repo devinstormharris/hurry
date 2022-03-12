@@ -4,16 +4,27 @@ namespace Hurry.Utilities.Services;
 
 public class TestService
 {
+    private static TestService _testService;
     private readonly WpmService _wpmService;
     private readonly TimerService _timerService;
+    
+    public Test Test;
 
-    public Test Test = new();
-
-
-    public TestService()
+    private TestService()
     {
         _timerService = new TimerService();
         _wpmService = new WpmService();
+        Test = new Test();
+    }
+
+    public static TestService GetInstance()
+    {
+        if (_testService == null)
+        {
+            _testService = new TestService();
+        }
+        
+        return _testService;
     }
 
     public async Task StartTimer()
