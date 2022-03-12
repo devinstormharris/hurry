@@ -1,5 +1,4 @@
-﻿using Hurry.Utilities.Models;
-using Hurry.Utilities.Services;
+﻿using Hurry.Utilities.Services;
 
 namespace Hurry.Console.Helpers;
 
@@ -9,10 +8,10 @@ public static class TestHelper
     {
         testService.Greet();
         await testService.Prep();
-        
+
         _ = testService.StartTimer();
         testService.Test.Response.UserInput = testService.GetUserInput()!;
-        
+
         testService.Stop();
     }
 
@@ -20,7 +19,7 @@ public static class TestHelper
     {
         testService.WaitForActivity();
         await testService.Countdown();
-        
+
         testService.WritePrompt(testService.Test.Prompt);
     }
 

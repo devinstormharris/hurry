@@ -6,7 +6,7 @@ namespace Hurry.Tests;
 public class WpmServiceTests
 {
     #region Helpers
-    
+
     private static char[] CreateInput(int wordCount)
     {
         var result = "";
@@ -21,7 +21,7 @@ public class WpmServiceTests
     #region Setup
 
     private TestService _testService = null!;
-    
+
     [SetUp]
     public void Setup()
     {
@@ -41,7 +41,7 @@ public class WpmServiceTests
 
         Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }
-    
+
     [Test]
     public void WpmServiceTests_TimeElapsedMoreThan60()
     {

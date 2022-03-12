@@ -20,7 +20,6 @@ public class WpmService
         var seconds = test.Response.SecondsElapsed;
 
         while (true)
-        {
             switch (seconds)
             {
                 case < 60:
@@ -36,6 +35,5 @@ public class WpmService
                     break;
                 }
             }
-        }
     }
 }

@@ -9,7 +9,7 @@ public static class InputHelper
         System.Console.WriteLine("Begin typing: ");
         return System.Console.ReadLine()!.ToCharArray();
     }
-    
+
     public static void WaitForActivity(this TestService testService)
     {
         System.Console.ReadKey();

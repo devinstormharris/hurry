@@ -7,7 +7,7 @@ public class TestService
     private static TestService _testService;
     private readonly WpmService _wpmService;
     private readonly TimerService _timerService;
-    
+
     public Test Test;
 
     private TestService()
@@ -19,11 +19,8 @@ public class TestService
 
     public static TestService GetInstance()
     {
-        if (_testService == null)
-        {
-            _testService = new TestService();
-        }
-        
+        if (_testService == null) _testService = new TestService();
+
         return _testService;
     }
 

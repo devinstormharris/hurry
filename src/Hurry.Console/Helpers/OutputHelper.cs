@@ -14,23 +14,23 @@ public static class WelcomeHelper
 
         System.Console.WriteLine("The console is waiting for activity. Press any key to start the test.");
     }
-    
+
     public static void WriteResults(this TestService testService)
     {
         System.Console.WriteLine($"You're WPM is {testService.Test.Result!.Wpm}.");
     }
-    
+
     public static void WritePrompt(this TestService testService, string? prompt)
     {
         System.Console.WriteLine("\n******************** BEGINNING OF PROMPT ********************");
         System.Console.WriteLine(prompt);
         System.Console.WriteLine("*********************** END OF PROMPT ***********************\n");
     }
-    
+
     public static async Task Countdown(this TestService testService)
     {
         System.Console.Write("Starting test in ");
-        
+
         for (var i = 3; i > 0; i--)
         {
             System.Console.Write($"{i}... ");
