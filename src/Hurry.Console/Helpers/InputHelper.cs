@@ -4,10 +4,10 @@ namespace Hurry.Console.Helpers;
 
 public static class InputHelper
 {
-    public static char[]? GetUserInput(this TestService testService)
+    public static string GetUserInput(this TestService testService)
     {
         System.Console.WriteLine("Begin typing: ");
-        return System.Console.ReadLine()!.ToCharArray();
+        return System.Console.ReadLine()!;
     }
 
     public static void WaitForActivity(this TestService testService)

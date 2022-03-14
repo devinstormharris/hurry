@@ -21,7 +21,7 @@ public class TimerService
         {
             await Task.Delay(TimeSpan.FromSeconds(1), _token)
                 .ConfigureAwait(false);
-            test.Response.SecondsElapsed++;
+            test.Result.SecondsElapsed++;
         }
 
         return test;

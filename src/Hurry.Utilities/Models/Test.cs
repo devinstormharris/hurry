@@ -7,13 +7,13 @@ public class Test
     public Test()
     {
         Result = new Results();
-        Response = new Response();
-        Prompt = PromptHelper.GetPrompt();
+        UserInput = string.Empty;
+        Prompt = string.Empty;
     }
 
-    public string? Prompt { get; set; }
+    public string Prompt { get; set; }
 
-    public Results? Result { get; }
+    public Results Result { get; }
 
-    public Response Response { get; set; }
+    public string UserInput { get; set; }
 }

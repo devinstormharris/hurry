@@ -10,7 +10,7 @@ public static class TestHelper
         await testService.Prep();
 
         _ = testService.StartTimer();
-        testService.Test.Response.UserInput = testService.GetUserInput()!;
+        testService.Test.UserInput = testService.GetUserInput()!;
 
         testService.Stop();
     }
