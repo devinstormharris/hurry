@@ -1,3 +1,4 @@
+using Hurry.Utilities.Helpers;
 using Hurry.Utilities.Models;
 
 namespace Hurry.Utilities.Services;
@@ -14,7 +15,10 @@ public class TestService
     {
         _timerService = new TimerService();
         _wpmService = new WpmService();
-        Test = new Test();
+        Test = new Test
+        {
+            Prompt = PromptHelper.GetPrompt()
+        };
     }
 
     public static TestService GetInstance()
