@@ -11,7 +11,7 @@ public class AccuracyServiceTests
     {
         var result = "";
 
-        for (var i = 0; i < wordCount; i++) result += "word!";
+        for (var i = 0; i < wordCount; i++) result += "word! ";
 
         return result;
     }
@@ -46,7 +46,7 @@ public class AccuracyServiceTests
     public void AccuracyService_Errors()
     {
         _testService.Test.UserInput = CreateInput(5);
-        _testService.Test.Prompt = CreateInput(4) + "word.";
+        _testService.Test.Prompt = CreateInput(4) + "word. ";
         _testService.CalculateAccuracy();
 
         Assert.AreEqual(0.8, _testService.Test.Result!.Accuracy);
