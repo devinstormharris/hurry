@@ -6,7 +6,7 @@ public class WpmService
 {
     public Test CalculateWpm(Test test)
     {
-        var wordCount = test.UserInput.Length / 5;
+        var wordCount = (test.UserInput.Length / 5) - test.Result.Errors;
         var time = CalculateMinutes(test);
 
         test.Result!.Wpm = (int) (wordCount / time);
