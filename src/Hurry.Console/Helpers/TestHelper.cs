@@ -26,8 +26,7 @@ public static class TestHelper
     private static void Stop(this TestService testService)
     {
         testService.StopTimer();
-        testService.CalculateAccuracy();
-        testService.CalculateWpm();
+        testService.GetWpm();
         testService.WriteResults();
     }
 }
