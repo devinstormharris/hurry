@@ -7,7 +7,6 @@ public class AccuracyService
     public Test CalculateAccuracy(Test test)
     {
         var accuracy = 1.0;
-        var errors = 0.0;
 
         var prompt = test.Prompt.Split();
         var userInput = test.UserInput.Split();
@@ -16,13 +15,13 @@ public class AccuracyService
         {
             if (prompt[i] != userInput[i])
             {
-                errors++;
+                test.Result.Errors++;
             }
         }
 
-        if (errors > 0)
+        if (test.Result.Errors > 0)
         {
-            accuracy = 1 - Math.Round(errors / userInput.Length, 1);
+            accuracy = 1 - Math.Round((double)test.Result.Errors / userInput.Length, 1);
         }
 
         test.Result.Accuracy = accuracy;
