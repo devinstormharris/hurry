@@ -26,7 +26,7 @@ public class AccuracyService
         }
 
         test.Result.Accuracy = accuracy;
-        
+
         return test;
     }
 }

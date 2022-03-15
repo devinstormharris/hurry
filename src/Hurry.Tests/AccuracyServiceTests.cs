@@ -51,5 +51,6 @@ public class AccuracyServiceTests
 
         Assert.AreEqual(0.8, _testService.Test.Result!.Accuracy);
     }
+
     #endregion
 }

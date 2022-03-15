@@ -44,7 +44,7 @@ public class TestService
     {
         Test = _wpmService.CalculateWpm(Test);
     }
-    
+
     public void CalculateAccuracy()
     {
         Test = _accuracyService.CalculateAccuracy(Test);
