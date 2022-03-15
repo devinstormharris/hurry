@@ -10,6 +10,6 @@ public class Results
     }
 
     public int Wpm { get; set; }
-    public int Accuracy { get; set; }
+    public double Accuracy { get; set; }
     public int SecondsElapsed { get; set; }
 }

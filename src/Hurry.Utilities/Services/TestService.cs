@@ -5,6 +5,7 @@ namespace Hurry.Utilities.Services;
 
 public class TestService
 {
+    private static AccuracyService _accuracyService;
     private static TestService _testService;
     private readonly WpmService _wpmService;
     private readonly TimerService _timerService;
@@ -13,6 +14,7 @@ public class TestService
 
     private TestService()
     {
+        _accuracyService = new AccuracyService();
         _timerService = new TimerService();
         _wpmService = new WpmService();
         Test = new Test
@@ -41,5 +43,10 @@ public class TestService
     public void CalculateWpm()
     {
         Test = _wpmService.CalculateWpm(Test);
+    }
+
+    public void CalculateAccuracy()
+    {
+        Test = _accuracyService.CalculateAccuracy(Test);
     }
 }
