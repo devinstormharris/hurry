@@ -11,5 +11,6 @@ public class Results
 
     public int Wpm { get; set; }
     public double Accuracy { get; set; }
+    public int Errors { get; set; }
     public int SecondsElapsed { get; set; }
 }
