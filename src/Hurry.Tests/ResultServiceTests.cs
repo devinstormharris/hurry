@@ -31,23 +31,24 @@ public class WpmServiceTests
     #endregion
 
     #region Tests
+    // TODO: Update tests to match new WPM algorithm
 
     [Test]
-    public void WpmServiceTests_TimeElapsedLessThan60()
+    public void TimeElapsedLessThan60()
     {
         _testService.Test.UserInput = CreateInput(20);
         _testService.Test.Result.SecondsElapsed = 20;
-        _testService.CalculateWpm();
+        _testService.GetWpm();
 
         Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }
 
     [Test]
-    public void WpmServiceTests_TimeElapsedMoreThan60()
+    public void TimeElapsedMoreThan60()
     {
         _testService.Test.UserInput = CreateInput(80);
         _testService.Test.Result.SecondsElapsed = 80;
-        _testService.CalculateWpm();
+        _testService.GetWpm();
 
         Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }
