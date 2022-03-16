@@ -5,6 +5,7 @@ public class Results
     public Results()
     {
         Wpm = 0;
+        Errors = 0;
         SecondsElapsed = 0;
     }
 
