@@ -1,13 +1,83 @@
+using Hurry.Utilities.Models;
 using Hurry.Utilities.Services;
 using NUnit.Framework;
 
 namespace Hurry.Tests;
 
-public class WpmServiceTests
+[TestFixture]
+public class ResultServiceTests
 {
+    [Test]
+    public void LessThanOneMinuteAndNoErrors()
+    {
+        var test = new Test
+        {
+            UserInput = CreateCorrectInput(20),
+            Prompt = CreateCorrectInput(20),
+            Result =
+            {
+                SecondsElapsed = 20
+            }
+        };
+        ResultService.GetWpm(test);
+
+        Assert.AreEqual(60, test.Result!.Wpm);
+    }
+    
+    [Test]
+    public void LessThanOneMinuteAndHasErrors()
+    {
+        var test = new Test
+        {
+            UserInput = CreateCorrectInput(20),
+            Prompt = CreateCorrectInput(19) + CreateWrongInput(1),
+            Result =
+            {
+                SecondsElapsed = 20
+            }
+        };
+        ResultService.GetWpm(test);
+
+        Assert.AreEqual(57, test.Result!.Wpm);
+    }
+    
+    [Test]
+    public void MoreThanOneMinuteAndHasErrors()
+    {
+        var test = new Test
+        {
+            UserInput = CreateCorrectInput(80),
+            Prompt = CreateCorrectInput(80),
+            Result =
+            {
+                SecondsElapsed = 80
+            }
+        };
+        ResultService.GetWpm(test);
+
+        Assert.AreEqual(60, test.Result!.Wpm);
+    }
+    
+    [Test]
+    public void MoreThanOneMinuteAndNoErrors()
+    {
+        var test = new Test
+        {
+            UserInput = CreateCorrectInput(80),
+            Prompt = CreateCorrectInput(70) + CreateWrongInput(10),
+            Result =
+            {
+                SecondsElapsed = 80
+            }
+        };
+        ResultService.GetWpm(test);
+
+        Assert.AreEqual(52, test.Result!.Wpm);
+    }
+    
     #region Helpers
 
-    private static string CreateInput(int wordCount)
+    private static string CreateCorrectInput(int wordCount)
     {
         var result = "";
 
@@ -16,65 +86,14 @@ public class WpmServiceTests
         return result;
     }
 
-    #endregion
-
-    #region Setup
-
-    private TestService _testService = null!;
-
-    [SetUp]
-    public void Setup()
+    private static string CreateWrongInput(int wordCount)
     {
-        _testService = TestService.GetInstance();
-    }
+        var result = "";
 
-    #endregion
+        for (var i = 0; i < wordCount; i++) result += "error! ";
 
-    #region Tests
-
-    [Test]
-    public void LessThanOneMinuteAndNoErrors()
-    {
-        _testService.Test.UserInput = CreateInput(20);
-        _testService.Test.Prompt = CreateInput(20);
-        _testService.Test.Result.SecondsElapsed = 20;
-        _testService.GetWpm();
-
-        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
+        return result;
     }
     
-    [Test]
-    public void LessThanOneMinuteAndHasErrors()
-    {
-        _testService.Test.UserInput = CreateInput(20);
-        _testService.Test.Prompt = CreateInput(19) + "error ";
-        _testService.Test.Result.SecondsElapsed = 20;
-        _testService.GetWpm();
-
-        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
-    }
-    
-    [Test]
-    public void MoreThanOneMinuteAndHasErrors()
-    {
-        _testService.Test.UserInput = CreateInput(80);
-        _testService.Test.Prompt = CreateInput(80);
-        _testService.Test.Result.SecondsElapsed = 80;
-        _testService.GetWpm();
-
-        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
-    }
-    
-    [Test]
-    public void MoreThanOneMinuteAndNoErrors()
-    {
-        _testService.Test.UserInput = CreateInput(80);
-        _testService.Test.Prompt = CreateInput(80);
-        _testService.Test.Result.SecondsElapsed = 80;
-        _testService.GetWpm();
-
-        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
-    }
-
     #endregion
 }

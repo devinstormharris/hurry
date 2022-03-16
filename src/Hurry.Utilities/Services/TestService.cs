@@ -41,6 +41,6 @@ public class TestService
 
     public void GetWpm()
     {
-        Test = _resultService.GetWpm(Test);
+        Test = ResultService.GetWpm(Test);
     }
 }

@@ -4,10 +4,10 @@ namespace Hurry.Utilities.Services;
 
 public class ResultService
 {
-    public Test GetWpm(Test test)
+    public static Test GetWpm(Test test)
     {
         GetErrors(test);
-        var wordCount = test.UserInput.Length / 5 - test.Result.Errors;
+        var wordCount = GetWordCount(test);
         var time = GetMinutes(test);
 
         test.Result!.Wpm = (int) (wordCount / time);
@@ -15,7 +15,7 @@ public class ResultService
         return test;
     }
 
-    private Test GetErrors(Test test)
+    private static void GetErrors(Test test)
     {
         var prompt = test.Prompt.Split();
         var userInput = test.UserInput.Split();
@@ -23,8 +23,20 @@ public class ResultService
         for (var i = 0; i < userInput.Length; i++)
             if (prompt[i] != userInput[i])
                 test.Result.Errors++;
+    }
+    
+    private static int GetWordCount(Test test)
+    {
+        var lengthWithoutSpaces = RemoveWhitespace(test.UserInput).Length;
+        
+        return lengthWithoutSpaces / 5 - test.Result.Errors;
+    }
 
-        return test;
+    private static string RemoveWhitespace(string input)
+    {
+        return new string(input.ToCharArray()
+            .Where(c => !Char.IsWhiteSpace(c))
+            .ToArray());
     }
 
     private static double GetMinutes(Test test)
