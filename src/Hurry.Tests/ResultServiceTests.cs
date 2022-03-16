@@ -11,7 +11,7 @@ public class WpmServiceTests
     {
         var result = "";
 
-        for (var i = 0; i < wordCount; i++) result += "word!";
+        for (var i = 0; i < wordCount; i++) result += "word! ";
 
         return result;
     }
@@ -32,22 +32,44 @@ public class WpmServiceTests
 
     #region Tests
 
-    // TODO: Update tests to match new WPM algorithm
-
     [Test]
-    public void TimeElapsedLessThan60()
+    public void LessThanOneMinuteAndNoErrors()
     {
         _testService.Test.UserInput = CreateInput(20);
+        _testService.Test.Prompt = CreateInput(20);
         _testService.Test.Result.SecondsElapsed = 20;
         _testService.GetWpm();
 
         Assert.AreEqual(60, _testService.Test.Result!.Wpm);
     }
-
+    
     [Test]
-    public void TimeElapsedMoreThan60()
+    public void LessThanOneMinuteAndHasErrors()
+    {
+        _testService.Test.UserInput = CreateInput(20);
+        _testService.Test.Prompt = CreateInput(19) + "error ";
+        _testService.Test.Result.SecondsElapsed = 20;
+        _testService.GetWpm();
+
+        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
+    }
+    
+    [Test]
+    public void MoreThanOneMinuteAndHasErrors()
     {
         _testService.Test.UserInput = CreateInput(80);
+        _testService.Test.Prompt = CreateInput(80);
+        _testService.Test.Result.SecondsElapsed = 80;
+        _testService.GetWpm();
+
+        Assert.AreEqual(60, _testService.Test.Result!.Wpm);
+    }
+    
+    [Test]
+    public void MoreThanOneMinuteAndNoErrors()
+    {
+        _testService.Test.UserInput = CreateInput(80);
+        _testService.Test.Prompt = CreateInput(80);
         _testService.Test.Result.SecondsElapsed = 80;
         _testService.GetWpm();
 
