@@ -7,7 +7,7 @@ public class ResultService
     public Test GetWpm(Test test)
     {
         GetErrors(test);
-        var wordCount = test.UserInput.Length / 5 - test.Result.Errors;
+        var wordCount = GetWordCount(test);
         var time = GetMinutes(test);
 
         test.Result!.Wpm = (int) (wordCount / time);
@@ -25,6 +25,11 @@ public class ResultService
                 test.Result.Errors++;
 
         return test;
+    }
+    
+    private int GetWordCount(Test test)
+    {
+        return test.UserInput.Length / 5 - test.Result.Errors;
     }
 
     private static double GetMinutes(Test test)
