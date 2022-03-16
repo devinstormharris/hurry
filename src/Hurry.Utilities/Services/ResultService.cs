@@ -15,7 +15,7 @@ public class ResultService
         return test;
     }
 
-    private Test GetErrors(Test test)
+    private void GetErrors(Test test)
     {
         var prompt = test.Prompt.Split();
         var userInput = test.UserInput.Split();
@@ -23,8 +23,6 @@ public class ResultService
         for (var i = 0; i < userInput.Length; i++)
             if (prompt[i] != userInput[i])
                 test.Result.Errors++;
-
-        return test;
     }
     
     private int GetWordCount(Test test)
