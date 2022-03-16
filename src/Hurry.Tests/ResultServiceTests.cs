@@ -31,6 +31,7 @@ public class WpmServiceTests
     #endregion
 
     #region Tests
+
     // TODO: Update tests to match new WPM algorithm
 
     [Test]

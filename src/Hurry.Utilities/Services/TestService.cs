@@ -15,7 +15,7 @@ public class TestService
     {
         _timerService = new TimerService();
         _resultService = new ResultService();
-        
+
         Test = new Test
         {
             Prompt = PromptHelper.GetPrompt()
