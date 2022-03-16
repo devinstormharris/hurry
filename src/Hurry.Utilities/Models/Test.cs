@@ -1,5 +1,3 @@
-using Hurry.Utilities.Helpers;
-
 namespace Hurry.Utilities.Models;
 
 public class Test
