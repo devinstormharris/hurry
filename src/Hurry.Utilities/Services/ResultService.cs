@@ -17,8 +17,6 @@ public class ResultService
 
     private Test GetErrors(Test test)
     {
-        var accuracy = 1.0;
-
         var prompt = test.Prompt.Split();
         var userInput = test.UserInput.Split();
 
@@ -29,13 +27,6 @@ public class ResultService
                 test.Result.Errors++;
             }
         }
-
-        if (test.Result.Errors > 0)
-        {
-            accuracy = 1 - Math.Round((double)test.Result.Errors / userInput.Length, 1);
-        }
-
-        test.Result.Accuracy = accuracy;
 
         return test;
     }
