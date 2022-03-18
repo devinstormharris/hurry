@@ -6,7 +6,6 @@ namespace Hurry.Utilities.Services;
 public class TestService
 {
     private static TestService _testService;
-    private readonly ResultService _resultService;
     private readonly TimerService _timerService;
 
     public Test Test;
@@ -14,8 +13,6 @@ public class TestService
     private TestService()
     {
         _timerService = new TimerService();
-        _resultService = new ResultService();
-
         Test = new Test
         {
             Prompt = PromptHelper.GetPrompt()

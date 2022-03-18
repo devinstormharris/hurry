@@ -2,7 +2,7 @@ using Hurry.Utilities.Models;
 
 namespace Hurry.Utilities.Services;
 
-public class ResultService
+public static class ResultService
 {
     public static Test GetWpm(Test test)
     {
