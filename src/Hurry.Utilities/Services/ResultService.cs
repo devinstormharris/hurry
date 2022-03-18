@@ -24,18 +24,18 @@ public static class ResultService
             if (prompt[i] != userInput[i])
                 test.Result.Errors++;
     }
-    
+
     private static int GetWordCount(Test test)
     {
         var lengthWithoutSpaces = RemoveWhitespace(test.UserInput).Length;
-        
+
         return lengthWithoutSpaces / 5 - test.Result.Errors;
     }
 
     private static string RemoveWhitespace(string input)
     {
         return new string(input.ToCharArray()
-            .Where(c => !Char.IsWhiteSpace(c))
+            .Where(c => !char.IsWhiteSpace(c))
             .ToArray());
     }
 

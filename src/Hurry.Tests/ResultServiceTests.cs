@@ -23,7 +23,7 @@ public class ResultServiceTests
 
         Assert.AreEqual(60, test.Result!.Wpm);
     }
-    
+
     [Test]
     public void LessThanOneMinuteAndHasErrors()
     {
@@ -40,7 +40,7 @@ public class ResultServiceTests
 
         Assert.AreEqual(57, test.Result!.Wpm);
     }
-    
+
     [Test]
     public void MoreThanOneMinuteAndHasErrors()
     {
@@ -57,7 +57,7 @@ public class ResultServiceTests
 
         Assert.AreEqual(60, test.Result!.Wpm);
     }
-    
+
     [Test]
     public void MoreThanOneMinuteAndNoErrors()
     {
@@ -74,8 +74,6 @@ public class ResultServiceTests
 
         Assert.AreEqual(52, test.Result!.Wpm);
     }
-    
-    #region Helpers
 
     private static string CreateCorrectInput(int wordCount)
     {
@@ -94,6 +92,4 @@ public class ResultServiceTests
 
         return result;
     }
-    
-    #endregion
 }
