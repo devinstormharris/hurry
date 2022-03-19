@@ -25,7 +25,7 @@ public static class ResultService
     }
 
     private const int _averageWordLength = 5;
-    private static int GetWordCount(Test test)
+    public static int GetWordCount(Test test)
     {
         var lengthWithoutSpaces = RemoveWhitespace(test.UserInput).Length;
 
@@ -41,7 +41,7 @@ public static class ResultService
 
     private const int _sixtySeconds = 60;
     private const double _oneMinute = 1.0;
-    private static double GetMinutes(Test test)
+    public static double GetMinutes(Test test)
     {
         var minutes = 0.0;
         var seconds = test.Result.SecondsElapsed;
@@ -67,6 +67,5 @@ public static class ResultService
     private static int CalculateWpm(int wordCount, double time)
     {
         return (int) (wordCount / time);
-
     }
 }
