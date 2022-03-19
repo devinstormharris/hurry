@@ -25,11 +25,12 @@ public static class ResultService
                 test.Result.Errors++;
     }
 
+    private const int _averageWordLength = 5;
     private static int GetWordCount(Test test)
     {
         var lengthWithoutSpaces = RemoveWhitespace(test.UserInput).Length;
 
-        return lengthWithoutSpaces / 5 - test.Result.Errors;
+        return lengthWithoutSpaces / _averageWordLength - test.Result.Errors;
     }
 
     private static string RemoveWhitespace(string input)
@@ -39,6 +40,8 @@ public static class ResultService
             .ToArray());
     }
 
+    private const int _sixtySeconds = 60;
+    private const double _oneMinute = 1.0;
     private static double GetMinutes(Test test)
     {
         var minutes = 0.0;
@@ -47,15 +50,15 @@ public static class ResultService
         while (true)
             switch (seconds)
             {
-                case < 60:
-                    if (minutes == 0) return seconds / 60.0;
-                    else return minutes + seconds / 60.0;
+                case < _sixtySeconds:
+                    if (minutes == 0) return seconds / (double)_sixtySeconds;
+                    else return minutes + seconds / (double)_sixtySeconds;
 
-                case 60:
-                    return 1.0;
+                case _sixtySeconds:
+                    return _oneMinute;
                 default:
                 {
-                    seconds -= 60;
+                    seconds -= _sixtySeconds;
                     minutes++;
                     break;
                 }
