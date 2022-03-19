@@ -1,15 +1,15 @@
 # Hurry
-This is a typing speed test console application created as a practice project. It is written in C# and .NET6. It is in early development, but you are welcome to run it locally.
+This is a typing speed test console application. It is written in C# and .NET. It is a practice project that is in development, but you are welcome to run it locally.
 
-## Running locally
-First, you will clone the repo.
+# Run locally
+1. Clone repo.
 
 ```git clone https://github.com/devinstormharris/hurry.git```
 
-Second, you will change to the indicated directory.
+2. Navigate to indicated directory.
 
-```cd hurry/src/hurry```
+```cd hurry/src/Hurry.Console```
 
-Finally, you will start the project.
+3. Run application.
 
 ```dotnet run```
