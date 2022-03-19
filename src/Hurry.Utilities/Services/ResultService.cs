@@ -9,13 +9,12 @@ public static class ResultService
         GetErrors(test);
         var wordCount = GetWordCount(test);
         var time = GetMinutes(test);
-
-        test.Result!.Wpm = (int) (wordCount / time);
+        test.Result!.Wpm = CalculateWpm(wordCount, time);
 
         return test;
     }
 
-    private static void GetErrors(Test test)
+    public static void GetErrors(Test test)
     {
         var prompt = test.Prompt.Split();
         var userInput = test.UserInput.Split();
@@ -63,5 +62,11 @@ public static class ResultService
                     break;
                 }
             }
+    }
+
+    private static int CalculateWpm(int wordCount, double time)
+    {
+        return (int) (wordCount / time);
+
     }
 }
