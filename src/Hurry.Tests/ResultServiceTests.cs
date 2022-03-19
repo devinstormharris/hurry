@@ -49,11 +49,89 @@ public class ResultServiceTests
         Assert.AreEqual(1, test.Result!.Errors);
     }
 
-    private static string CreateCorrectInput(int wordCount)
+    [Test]
+    public void GetWordCount_HasWhitespace_ExpectedWordCount()
+    {
+        // Arrange
+        var test = new Test
+        {
+            UserInput = CreateCorrectInput(5)
+        };
+        
+        // Act
+        var wordCount = ResultService.GetWordCount(test);
+
+        // Assert
+        Assert.AreEqual(5, wordCount);
+    }
+    
+    [Test]
+    public void GetWordCount_NoWhitespace_ExpectedWordCount()
+    {
+        // Arrange
+        var test = new Test
+        {
+            UserInput = CreateCorrectInput(5, true)
+        };
+        
+        // Act
+        var wordCount = ResultService.GetWordCount(test);
+
+        // Assert
+        Assert.AreEqual(5, wordCount);
+    }
+
+    [Test]
+    public void GetMinutes_LessThanOne_ExpectedMinuteCount()
+    {
+        // Arrange
+        var test = new Test
+        {
+            Result =
+            {
+                SecondsElapsed = 30
+            }
+        };
+        
+        // Act
+        var minutes = ResultService.GetMinutes(test);
+        
+        // Assert
+        Assert.AreEqual(.5, minutes);
+    }
+    
+    [Test]
+    public void GetMinutes_MoreThanOne_ExpectedMinuteCount()
+    {
+        // Arrange
+        var test = new Test
+        {
+            Result =
+            {
+                SecondsElapsed = 90
+            }
+        };
+        
+        // Act
+        var minutes = ResultService.GetMinutes(test);
+        
+        // Assert
+        Assert.AreEqual(1.5, minutes);
+    }
+
+    private static string CreateCorrectInput(int wordCount, bool hasWhitespace = false)
     {
         var result = "";
+        if (hasWhitespace)
+        {
+            for (var i = 0; i < wordCount; i++) result += "word! ";
 
-        for (var i = 0; i < wordCount; i++) result += "word! ";
+        }
+        else
+        {
+            for (var i = 0; i < wordCount; i++) result += "word!";
+
+        }
 
         return result;
     }
