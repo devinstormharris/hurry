@@ -8,80 +8,130 @@ namespace Hurry.Tests;
 public class ResultServiceTests
 {
     [Test]
-    public void LessThanOneMinuteAndNoErrors()
+    public void GetErrors_NoErrorsFound_NoErrorsReported()
     {
+        // Arrange
         var test = new Test
         {
-            UserInput = CreateCorrectInput(20),
-            Prompt = CreateCorrectInput(20),
+            UserInput = CreateCorrectInput(5),
+            Prompt = CreateCorrectInput(5),
             Result =
             {
-                SecondsElapsed = 20
+                SecondsElapsed = 5
             }
         };
-        ResultService.GetWpm(test);
+        
+        // Act
+        ResultService.GetErrors(test);
 
-        Assert.AreEqual(60, test.Result!.Wpm);
+        // Assert
+        Assert.AreEqual(0, test.Result!.Errors);
     }
     
     [Test]
-    public void LessThanOneMinuteAndHasErrors()
+    public void GetErrors_WithErrors_ErrorsReported()
     {
+        // Arrange
         var test = new Test
         {
-            UserInput = CreateCorrectInput(20),
-            Prompt = CreateCorrectInput(19) + CreateWrongInput(1),
+            UserInput = CreateCorrectInput(5),
+            Prompt = CreateCorrectInput(4) + CreateWrongInput(1),
             Result =
             {
-                SecondsElapsed = 20
+                SecondsElapsed = 5
             }
         };
-        ResultService.GetWpm(test);
+        
+        // Act
+        ResultService.GetErrors(test);
 
-        Assert.AreEqual(57, test.Result!.Wpm);
+        // Assert
+        Assert.AreEqual(1, test.Result!.Errors);
+    }
+
+    [Test]
+    public void GetWordCount_HasWhitespace_ExpectedWordCount()
+    {
+        // Arrange
+        var test = new Test
+        {
+            UserInput = CreateCorrectInput(5)
+        };
+        
+        // Act
+        var wordCount = ResultService.GetWordCount(test);
+
+        // Assert
+        Assert.AreEqual(5, wordCount);
     }
     
     [Test]
-    public void MoreThanOneMinuteAndHasErrors()
+    public void GetWordCount_NoWhitespace_ExpectedWordCount()
     {
+        // Arrange
         var test = new Test
         {
-            UserInput = CreateCorrectInput(80),
-            Prompt = CreateCorrectInput(80),
+            UserInput = CreateCorrectInput(5, true)
+        };
+        
+        // Act
+        var wordCount = ResultService.GetWordCount(test);
+
+        // Assert
+        Assert.AreEqual(5, wordCount);
+    }
+
+    [Test]
+    public void GetMinutes_LessThanOne_ExpectedMinuteCount()
+    {
+        // Arrange
+        var test = new Test
+        {
             Result =
             {
-                SecondsElapsed = 80
+                SecondsElapsed = 30
             }
         };
-        ResultService.GetWpm(test);
-
-        Assert.AreEqual(60, test.Result!.Wpm);
+        
+        // Act
+        var minutes = ResultService.GetMinutes(test);
+        
+        // Assert
+        Assert.AreEqual(.5, minutes);
     }
     
     [Test]
-    public void MoreThanOneMinuteAndNoErrors()
+    public void GetMinutes_MoreThanOne_ExpectedMinuteCount()
     {
+        // Arrange
         var test = new Test
         {
-            UserInput = CreateCorrectInput(80),
-            Prompt = CreateCorrectInput(70) + CreateWrongInput(10),
             Result =
             {
-                SecondsElapsed = 80
+                SecondsElapsed = 90
             }
         };
-        ResultService.GetWpm(test);
-
-        Assert.AreEqual(52, test.Result!.Wpm);
+        
+        // Act
+        var minutes = ResultService.GetMinutes(test);
+        
+        // Assert
+        Assert.AreEqual(1.5, minutes);
     }
-    
-    #region Helpers
 
-    private static string CreateCorrectInput(int wordCount)
+    private static string CreateCorrectInput(int wordCount, bool hasWhitespace = false)
     {
         var result = "";
+        if (hasWhitespace)
+        {
+            for (var i = 0; i < wordCount; i++) result += "word! ";
 
-        for (var i = 0; i < wordCount; i++) result += "word! ";
+        }
+        else
+        {
+            for (var i = 0; i < wordCount; i++) result += "word!";
+
+        }
 
         return result;
     }
@@ -94,6 +144,4 @@ public class ResultServiceTests
 
         return result;
     }
-    
-    #endregion
 }

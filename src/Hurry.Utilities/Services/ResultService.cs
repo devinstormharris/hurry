@@ -2,20 +2,19 @@ using Hurry.Utilities.Models;
 
 namespace Hurry.Utilities.Services;
 
-public class ResultService
+public static class ResultService
 {
     public static Test GetWpm(Test test)
     {
         GetErrors(test);
         var wordCount = GetWordCount(test);
         var time = GetMinutes(test);
-
-        test.Result!.Wpm = (int) (wordCount / time);
+        test.Result!.Wpm = CalculateWpm(wordCount, time);
 
         return test;
     }
 
-    private static void GetErrors(Test test)
+    public static void GetErrors(Test test)
     {
         var prompt = test.Prompt.Split();
         var userInput = test.UserInput.Split();
@@ -24,22 +23,25 @@ public class ResultService
             if (prompt[i] != userInput[i])
                 test.Result.Errors++;
     }
-    
-    private static int GetWordCount(Test test)
+
+    private const int _averageWordLength = 5;
+    public static int GetWordCount(Test test)
     {
         var lengthWithoutSpaces = RemoveWhitespace(test.UserInput).Length;
-        
-        return lengthWithoutSpaces / 5 - test.Result.Errors;
+
+        return lengthWithoutSpaces / _averageWordLength - test.Result.Errors;
     }
 
     private static string RemoveWhitespace(string input)
     {
         return new string(input.ToCharArray()
-            .Where(c => !Char.IsWhiteSpace(c))
+            .Where(c => !char.IsWhiteSpace(c))
             .ToArray());
     }
 
-    private static double GetMinutes(Test test)
+    private const int _sixtySeconds = 60;
+    private const double _oneMinute = 1.0;
+    public static double GetMinutes(Test test)
     {
         var minutes = 0.0;
         var seconds = test.Result.SecondsElapsed;
@@ -47,18 +49,23 @@ public class ResultService
         while (true)
             switch (seconds)
             {
-                case < 60:
-                    if (minutes == 0) return seconds / 60.0;
-                    else return minutes + seconds / 60.0;
+                case < _sixtySeconds:
+                    if (minutes == 0) return seconds / (double)_sixtySeconds;
+                    else return minutes + seconds / (double)_sixtySeconds;
 
-                case 60:
-                    return 1.0;
+                case _sixtySeconds:
+                    return _oneMinute;
                 default:
                 {
-                    seconds -= 60;
+                    seconds -= _sixtySeconds;
                     minutes++;
                     break;
                 }
             }
+    }
+
+    private static int CalculateWpm(int wordCount, double time)
+    {
+        return (int) (wordCount / time);
     }
 }
