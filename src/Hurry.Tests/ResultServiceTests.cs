@@ -8,71 +8,45 @@ namespace Hurry.Tests;
 public class ResultServiceTests
 {
     [Test]
-    public void LessThanOneMinuteAndNoErrors()
+    public void GetErrors_NoErrorsFound_NoErrorsReported()
     {
+        // Arrange
         var test = new Test
         {
-            UserInput = CreateCorrectInput(20),
-            Prompt = CreateCorrectInput(20),
+            UserInput = CreateCorrectInput(5),
+            Prompt = CreateCorrectInput(5),
             Result =
             {
-                SecondsElapsed = 20
+                SecondsElapsed = 5
             }
         };
-        ResultService.GetWpm(test);
+        
+        // Act
+        ResultService.GetErrors(test);
 
-        Assert.AreEqual(60, test.Result!.Wpm);
+        // Assert
+        Assert.AreEqual(0, test.Result!.Errors);
     }
-
+    
     [Test]
-    public void LessThanOneMinuteAndHasErrors()
+    public void GetErrors_WithErrors_ErrorsReported()
     {
+        // Arrange
         var test = new Test
         {
-            UserInput = CreateCorrectInput(20),
-            Prompt = CreateCorrectInput(19) + CreateWrongInput(1),
+            UserInput = CreateCorrectInput(5),
+            Prompt = CreateCorrectInput(4) + CreateWrongInput(1),
             Result =
             {
-                SecondsElapsed = 20
+                SecondsElapsed = 5
             }
         };
-        ResultService.GetWpm(test);
+        
+        // Act
+        ResultService.GetErrors(test);
 
-        Assert.AreEqual(57, test.Result!.Wpm);
-    }
-
-    [Test]
-    public void MoreThanOneMinuteAndHasErrors()
-    {
-        var test = new Test
-        {
-            UserInput = CreateCorrectInput(80),
-            Prompt = CreateCorrectInput(80),
-            Result =
-            {
-                SecondsElapsed = 80
-            }
-        };
-        ResultService.GetWpm(test);
-
-        Assert.AreEqual(60, test.Result!.Wpm);
-    }
-
-    [Test]
-    public void MoreThanOneMinuteAndNoErrors()
-    {
-        var test = new Test
-        {
-            UserInput = CreateCorrectInput(80),
-            Prompt = CreateCorrectInput(70) + CreateWrongInput(10),
-            Result =
-            {
-                SecondsElapsed = 80
-            }
-        };
-        ResultService.GetWpm(test);
-
-        Assert.AreEqual(52, test.Result!.Wpm);
+        // Assert
+        Assert.AreEqual(1, test.Result!.Errors);
     }
 
     private static string CreateCorrectInput(int wordCount)
