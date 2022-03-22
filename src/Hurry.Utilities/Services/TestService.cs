@@ -38,6 +38,6 @@ public class TestService
 
     public void GetWpm()
     {
-        Test = ResultService.GetWpm(Test);
+        Test = ResultHelper.GetWpm(Test);
     }
 }

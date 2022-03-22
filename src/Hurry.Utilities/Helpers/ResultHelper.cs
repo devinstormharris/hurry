@@ -1,8 +1,8 @@
 using Hurry.Utilities.Models;
 
-namespace Hurry.Utilities.Services;
+namespace Hurry.Utilities.Helpers;
 
-public static class ResultService
+public static class ResultHelper
 {
     public static Test GetWpm(Test test)
     {
