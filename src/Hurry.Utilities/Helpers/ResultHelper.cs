@@ -66,6 +66,7 @@ public static class ResultHelper
 
     private static int CalculateWpm(int wordCount, double time)
     {
-        return (int) (wordCount / time);
+        var wpm = (int) (wordCount / time);
+        return wpm < 0 ? 0 : wpm;
     }
 }
