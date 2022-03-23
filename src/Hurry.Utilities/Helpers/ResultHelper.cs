@@ -1,8 +1,8 @@
 using Hurry.Utilities.Models;
 
-namespace Hurry.Utilities.Services;
+namespace Hurry.Utilities.Helpers;
 
-public static class ResultService
+public static class ResultHelper
 {
     public static Test GetWpm(Test test)
     {
@@ -66,6 +66,7 @@ public static class ResultService
 
     private static int CalculateWpm(int wordCount, double time)
     {
-        return (int) (wordCount / time);
+        var wpm = (int) (wordCount / time);
+        return wpm < 0 ? 0 : wpm;
     }
 }

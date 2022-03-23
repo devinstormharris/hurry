@@ -1,3 +1,4 @@
+using Hurry.Utilities.Helpers;
 using Hurry.Utilities.Models;
 using Hurry.Utilities.Services;
 using NUnit.Framework;
@@ -7,6 +8,8 @@ namespace Hurry.Tests;
 [TestFixture]
 public class ResultServiceTests
 {
+    #region GetErrors() Tests
+    
     [Test]
     public void GetErrors_NoErrorsFound_NoErrorsReported()
     {
@@ -22,7 +25,7 @@ public class ResultServiceTests
         };
         
         // Act
-        ResultService.GetErrors(test);
+        ResultHelper.GetErrors(test);
 
         // Assert
         Assert.AreEqual(0, test.Result!.Errors);
@@ -43,12 +46,16 @@ public class ResultServiceTests
         };
         
         // Act
-        ResultService.GetErrors(test);
+        ResultHelper.GetErrors(test);
 
         // Assert
         Assert.AreEqual(1, test.Result!.Errors);
     }
 
+    #endregion
+    
+    #region GetWordCount() Tests
+    
     [Test]
     public void GetWordCount_HasWhitespace_ExpectedWordCount()
     {
@@ -59,7 +66,7 @@ public class ResultServiceTests
         };
         
         // Act
-        var wordCount = ResultService.GetWordCount(test);
+        var wordCount = ResultHelper.GetWordCount(test);
 
         // Assert
         Assert.AreEqual(5, wordCount);
@@ -75,12 +82,16 @@ public class ResultServiceTests
         };
         
         // Act
-        var wordCount = ResultService.GetWordCount(test);
+        var wordCount = ResultHelper.GetWordCount(test);
 
         // Assert
         Assert.AreEqual(5, wordCount);
     }
 
+    #endregion
+    
+    #region GetMinutes() Tests
+    
     [Test]
     public void GetMinutes_LessThanOne_ExpectedMinuteCount()
     {
@@ -94,7 +105,7 @@ public class ResultServiceTests
         };
         
         // Act
-        var minutes = ResultService.GetMinutes(test);
+        var minutes = ResultHelper.GetMinutes(test);
         
         // Assert
         Assert.AreEqual(.5, minutes);
@@ -113,12 +124,15 @@ public class ResultServiceTests
         };
         
         // Act
-        var minutes = ResultService.GetMinutes(test);
+        var minutes = ResultHelper.GetMinutes(test);
         
         // Assert
         Assert.AreEqual(1.5, minutes);
     }
 
+    #endregion
+    
+    #region Helpers
     private static string CreateCorrectInput(int wordCount, bool hasWhitespace = false)
     {
         var result = "";
@@ -144,4 +158,6 @@ public class ResultServiceTests
 
         return result;
     }
+    
+    #endregion Helpers
 }
