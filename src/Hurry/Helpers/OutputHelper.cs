@@ -17,7 +17,7 @@ public static class WelcomeHelper
 
     public static void WriteResults(this TestService testService)
     {
-        System.Console.WriteLine($"You're WPM is {testService.Test.Result!.Wpm}.");
+        System.Console.WriteLine($"You're WPM is {testService.Test.Wpm}.");
     }
 
     public static void WritePrompt(this TestService testService, string prompt)

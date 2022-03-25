@@ -9,7 +9,7 @@ public static class ResultHelper
         GetErrors(test);
         var wordCount = GetWordCount(test);
         var time = GetMinutes(test);
-        test.Result!.Wpm = CalculateWpm(wordCount, time);
+        test.Wpm = CalculateWpm(wordCount, time);
 
         return test;
     }
@@ -21,7 +21,7 @@ public static class ResultHelper
 
         for (var i = 0; i < userInput.Length; i++)
             if (prompt[i] != userInput[i])
-                test.Result.Errors++;
+                test.Errors++;
     }
 
     private const int _averageWordLength = 5;
@@ -29,7 +29,7 @@ public static class ResultHelper
     {
         var lengthWithoutSpaces = RemoveWhitespace(test.UserInput).Length;
 
-        return lengthWithoutSpaces / _averageWordLength - test.Result.Errors;
+        return lengthWithoutSpaces / _averageWordLength - test.Errors;
     }
 
     private static string RemoveWhitespace(string input)
@@ -44,7 +44,7 @@ public static class ResultHelper
     public static double GetMinutes(Test test)
     {
         var minutes = 0.0;
-        var seconds = test.Result.SecondsElapsed;
+        var seconds = test.SecondsElapsed;
 
         while (true)
             switch (seconds)

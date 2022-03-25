@@ -17,17 +17,14 @@ public class ResultServiceTests
         {
             UserInput = CreateCorrectInput(5),
             Prompt = CreateCorrectInput(5),
-            Result =
-            {
-                SecondsElapsed = 5
-            }
+            SecondsElapsed = 5
         };
         
         // Act
         ResultHelper.GetErrors(test);
 
         // Assert
-        Assert.AreEqual(0, test.Result!.Errors);
+        Assert.AreEqual(0, test.Errors);
     }
     
     [Test]
@@ -38,17 +35,14 @@ public class ResultServiceTests
         {
             UserInput = CreateCorrectInput(5),
             Prompt = CreateCorrectInput(4) + CreateWrongInput(1),
-            Result =
-            {
-                SecondsElapsed = 5
-            }
+            SecondsElapsed = 5
         };
         
         // Act
         ResultHelper.GetErrors(test);
 
         // Assert
-        Assert.AreEqual(1, test.Result!.Errors);
+        Assert.AreEqual(1, test.Errors);
     }
 
     #endregion
@@ -97,10 +91,7 @@ public class ResultServiceTests
         // Arrange
         var test = new Test
         {
-            Result =
-            {
-                SecondsElapsed = 30
-            }
+            SecondsElapsed = 30
         };
         
         // Act
@@ -116,10 +107,7 @@ public class ResultServiceTests
         // Arrange
         var test = new Test
         {
-            Result =
-            {
                 SecondsElapsed = 90
-            }
         };
         
         // Act

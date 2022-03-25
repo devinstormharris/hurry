@@ -4,14 +4,20 @@ public class Test
 {
     public Test()
     {
-        Result = new Results();
         UserInput = string.Empty;
         Prompt = string.Empty;
+        Wpm = 0;
+        Errors = 0;
+        SecondsElapsed = 0;
     }
 
     public string Prompt { get; set; }
-
-    public Results Result { get; }
-
+    
     public string UserInput { get; set; }
+    
+    public int Wpm { get; set; }
+    
+    public int Errors { get; set; }
+    
+    public int SecondsElapsed { get; set; }
 }
