@@ -4,29 +4,29 @@ namespace Hurry.Helpers;
 
 public static class TestHelper
 {
-    public static async Task Start(this TestService testService)
+    public static async Task Start(this WpmTestService wpmTestService)
     {
-        testService.Greet();
-        await testService.Prep();
+        wpmTestService.Greet();
+        await wpmTestService.Prep();
 
-        _ = testService.StartTimer();
-        testService.Test.UserInput = testService.GetUserInput()!;
+        _ = wpmTestService.StartTimer();
+        wpmTestService.Test.UserInput = wpmTestService.GetUserInput()!;
 
-        testService.Stop();
+        wpmTestService.Stop();
     }
 
-    private static async Task Prep(this TestService testService)
+    private static async Task Prep(this WpmTestService wpmTestService)
     {
-        testService.WaitForActivity();
-        await testService.Countdown();
+        wpmTestService.WaitForActivity();
+        await wpmTestService.Countdown();
 
-        testService.WritePrompt(testService.Test.Prompt);
+        wpmTestService.WritePrompt(wpmTestService.Test.Prompt);
     }
 
-    private static void Stop(this TestService testService)
+    private static void Stop(this WpmTestService wpmTestService)
     {
-        testService.StopTimer();
-        testService.GetWpm();
-        testService.WriteResults();
+        wpmTestService.StopTimer();
+        wpmTestService.GetWpm();
+        wpmTestService.WriteResults();
     }
 }

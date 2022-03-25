@@ -6,16 +6,16 @@ namespace Hurry;
 
 public static class Program
 {
-    private static TestService _testService = null!;
+    private static WpmTestService _wpmTestService = null!;
 
     private static async Task Main()
     {
         var services = new ServiceCollection()
-            .AddSingleton(TestService.GetInstance());
+            .AddSingleton(WpmTestService.GetInstance());
 
         await using var serviceProvider = services.BuildServiceProvider();
-        _testService = serviceProvider.GetService<TestService>()!;
+        _wpmTestService = serviceProvider.GetService<WpmTestService>()!;
 
-        await _testService.Start();
+        await _wpmTestService.Start();
     }
 }

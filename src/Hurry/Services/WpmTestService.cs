@@ -3,14 +3,14 @@ using Hurry.Models;
 
 namespace Hurry.Services;
 
-public class TestService
+public class WpmTestService
 {
-    private static TestService _testService;
+    private static WpmTestService _wpmTestService;
     private readonly TimerService _timerService;
 
     public Test Test;
 
-    private TestService()
+    private WpmTestService()
     {
         _timerService = new TimerService();
         Test = new Test
@@ -19,11 +19,11 @@ public class TestService
         };
     }
 
-    public static TestService GetInstance()
+    public static WpmTestService GetInstance()
     {
-        if (_testService == null) _testService = new TestService();
+        if (_wpmTestService == null) _wpmTestService = new WpmTestService();
 
-        return _testService;
+        return _wpmTestService;
     }
 
     public async Task StartTimer()
