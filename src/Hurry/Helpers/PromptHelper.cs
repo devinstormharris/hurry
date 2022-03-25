@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Hurry.Utilities.Helpers;
+namespace Hurry.Helpers;
 
 public static class PromptHelper
 {

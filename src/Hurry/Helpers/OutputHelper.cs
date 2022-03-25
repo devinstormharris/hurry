@@ -1,6 +1,6 @@
-using Hurry.Utilities.Services;
+using Hurry.Services;
 
-namespace Hurry.Console.Helpers;
+namespace Hurry.Helpers;
 
 public static class WelcomeHelper
 {

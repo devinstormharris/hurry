@@ -1,6 +1,6 @@
-using Hurry.Utilities.Models;
+using Hurry.Models;
 
-namespace Hurry.Utilities.Helpers;
+namespace Hurry.Helpers;
 
 public static class ResultHelper
 {

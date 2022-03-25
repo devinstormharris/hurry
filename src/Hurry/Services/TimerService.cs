@@ -1,6 +1,6 @@
-using Hurry.Utilities.Models;
+using Hurry.Models;
 
-namespace Hurry.Utilities.Services;
+namespace Hurry.Services;
 
 public class TimerService
 {

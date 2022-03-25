@@ -1,6 +1,5 @@
-using Hurry.Utilities.Helpers;
-using Hurry.Utilities.Models;
-using Hurry.Utilities.Services;
+using Hurry.Helpers;
+using Hurry.Models;
 using NUnit.Framework;
 
 namespace Hurry.Tests;

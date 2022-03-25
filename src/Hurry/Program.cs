@@ -1,8 +1,8 @@
-﻿using Hurry.Console.Helpers;
-using Hurry.Utilities.Services;
+﻿using Hurry.Helpers;
+using Hurry.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Hurry.Console;
+namespace Hurry;
 
 public static class Program
 {

@@ -1,7 +1,7 @@
-using Hurry.Utilities.Helpers;
-using Hurry.Utilities.Models;
+using Hurry.Helpers;
+using Hurry.Models;
 
-namespace Hurry.Utilities.Services;
+namespace Hurry.Services;
 
 public class TestService
 {
