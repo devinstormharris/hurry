@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E5846AC0-320
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hurry.Utilities", "src\Hurry.Utilities\Hurry.Utilities.csproj", "{30066BC9-9907-4333-B186-A6F2B508FA09}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hurry.Console", "src\Hurry.Console\Hurry.Console.csproj", "{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hurry", "src\Hurry\Hurry.csproj", "{2BE64B19-ADDA-4AE7-BD8A-C6C037697976}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurry.Tests", "src\Hurry.Tests\Hurry.Tests.csproj", "{CD025A8A-C9EC-4735-98C9-DF461F8869FA}"
 EndProject
