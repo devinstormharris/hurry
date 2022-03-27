@@ -1,4 +1,4 @@
-using Hurry.Services;
+using Hurry.WpmTest;
 
 namespace Hurry.Helpers;
 

@@ -1,5 +1,5 @@
 ﻿using Hurry.Helpers;
-using Hurry.Services;
+using Hurry.WpmTest;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hurry;

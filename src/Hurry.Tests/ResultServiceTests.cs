@@ -1,5 +1,5 @@
 using Hurry.Helpers;
-using Hurry.Models;
+using Hurry.WpmTest;
 using NUnit.Framework;
 
 namespace Hurry.Tests;

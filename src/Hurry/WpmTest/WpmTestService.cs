@@ -1,7 +1,7 @@
 using Hurry.Helpers;
-using Hurry.Models;
+using Hurry.Timer;
 
-namespace Hurry.Services;
+namespace Hurry.WpmTest;
 
 public class WpmTestService
 {
@@ -21,9 +21,7 @@ public class WpmTestService
 
     public static WpmTestService GetInstance()
     {
-        if (_wpmTestService == null) _wpmTestService = new WpmTestService();
-
-        return _wpmTestService;
+        return _wpmTestService ?? (_wpmTestService = new WpmTestService());
     }
 
     public async Task StartTimer()

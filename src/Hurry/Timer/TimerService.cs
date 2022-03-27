@@ -1,6 +1,6 @@
-using Hurry.Models;
+using Hurry.WpmTest;
 
-namespace Hurry.Services;
+namespace Hurry.Timer;
 
 public class TimerService
 {

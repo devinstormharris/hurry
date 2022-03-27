@@ -1,4 +1,4 @@
-namespace Hurry.Models;
+namespace Hurry.WpmTest;
 
 public class Test
 {
