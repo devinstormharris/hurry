@@ -1,6 +1,6 @@
-﻿using Hurry.Helpers;
+﻿using Hurry.WpmTest.Services;
 
-namespace Hurry.WpmTest;
+namespace Hurry.WpmTest.Helpers;
 
 public static class TestHelper
 {

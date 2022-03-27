@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="Resources\prompt1.txt" />
-      <EmbeddedResource Include="Resources\prompt2.txt" />
+      <EmbeddedResource Include="WpmTest\Resources\prompt1.txt" />
+      <EmbeddedResource Include="WpmTest\Resources\prompt2.txt" />
     </ItemGroup>
 
 </Project>

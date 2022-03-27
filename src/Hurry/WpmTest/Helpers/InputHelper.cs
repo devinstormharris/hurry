@@ -1,6 +1,6 @@
-using Hurry.WpmTest;
+using Hurry.WpmTest.Services;
 
-namespace Hurry.Helpers;
+namespace Hurry.WpmTest.Helpers;
 
 public static class InputHelper
 {

@@ -1,6 +1,4 @@
-using Hurry.WpmTest;
-
-namespace Hurry.Helpers;
+namespace Hurry.WpmTest.Helpers;
 
 public static class ResultHelper
 {

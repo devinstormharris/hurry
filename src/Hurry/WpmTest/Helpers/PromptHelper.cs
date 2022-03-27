@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Hurry.Helpers;
+namespace Hurry.WpmTest.Helpers;
 
 public static class PromptHelper
 {
